@@ -2,7 +2,7 @@
 Read/Write xslx file.
 This is base on https://github.com/stephen-hardy/xlsx.js
 
-sample.js is sample scriot.
+samples/sample-read.js and sample-save.js are sample scriots.
 
 Settins:
 ------------
