@@ -1,0 +1,72 @@
+{
+    "worksheets": [
+        [
+            [
+                "Dates, all 24th November 2006"
+            ],
+            [
+                "dd/mm/yyyy",
+                "2006/11/26"
+            ],
+            [
+                "yyyy/mm/dd",
+                "2006-11-26"
+            ],
+            [
+                "yyyy-mm-dd",
+                "06/11/26"
+            ],
+            [
+                "yy/mm/dd",
+                "26/11/0626"
+            ],
+            [
+                "dd/mm/yy",
+                "26-11-06"
+            ],
+            [
+                "dd-mm-yy",
+                "39045"
+            ],
+            [
+                ""
+            ],
+            [
+                "Numbers, all 10.52"
+            ],
+            [
+                "nn.nn",
+                "10.52"
+            ],
+            [
+                "nn.nnn",
+                "10.52"
+            ],
+            [
+                "nn.n",
+                "10.52"
+            ],
+            [
+                "Â£nn.nn",
+                "10.52"
+            ]
+        ],
+        [
+            [
+                "1"
+            ]
+        ],
+        [
+            [
+                "2"
+            ]
+        ]
+    ],
+    "zipTime": 50,
+    "creator": "",
+    "lastModifiedBy": "",
+    "created": null,
+    "modified": null,
+    "activeWorksheet": 0,
+    "processTime": 3
+}
