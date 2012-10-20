@@ -1,5 +1,5 @@
 
-Read/Write xslx file.
+Read/Write xlsx file.
 This is base on https://github.com/stephen-hardy/xlsx.js
 
 samples/sample-read.js and sample-save.js are sample scriots.
@@ -8,10 +8,24 @@ Settins:
 ------------
     $ npm install
 
+Cake:
+------------
+    $ cake
+    Cakefile defines the following tasks:
+    
+    cake build                # build coffee scripts into js
+    cake lint                 # lint coffee scripts
+    cake doc                  # generate documents
+    cake clean:all            # clean pervious built js files and documents
+    cake clean:js             # clean pervious built js files
+    cake clean:doc            # clean pervi    
+
+
 Sample run:
 -----------
     $ cd samples
-    $ node sampel-read.js
+    $ coffee sample-read.js
+
     
 This script reads testdata/Formating.js and show parsed results in json format.
 
@@ -94,10 +108,10 @@ This script reads testdata/Formating.js and show parsed results in json format.
 
 This script makes simple excel wrbook and saves to testdata/save.xlsx.
 
-You can pen save.xslx using Open-Office or NeoOffice. 
+You can open save.xlsx using Open-Office or NeoOffice. 
 (I am working on Mac, and I have no MS-Excel.)
 
 testdata/Formatting.js is https://github.com/apache/poi/blob/trunk/test-data/spreadsheet/Formatting.xlsx .
 
-
+CakeFile and package.js are based at https://github.com/whitetrefoil/Xlsx2Json_node .
  

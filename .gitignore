@@ -1,7 +1,10 @@
 node_modules
+.node_modules
+Thumbs.db
 *~
 *.log
 .DS_Store
 samples/.DS_Store
 lib/.DS_Store
-
+docs
+test/testout
