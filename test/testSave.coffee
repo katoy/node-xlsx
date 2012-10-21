@@ -63,6 +63,7 @@ describe 'Write XSLS ', ->
   workbook.modified = new Date()
 
   # save
+  fs.mkdir "test/testout"
   encodedData = xlsx.encode(workbook)
   binaryData = new Buffer(encodedData["base64"], "base64")
   fs.writeFileSync "test/testout/save.xlsx", binaryData
@@ -70,17 +71,17 @@ describe 'Write XSLS ', ->
   it 'should same as in testref/save.xlsx', ->
     helper.compareXSLX("test/testout/save.xlsx", "test/testref/save.xlsx").should.be.equal true
 
-  data = xlsx.decode fs.readFileSync("test/testout/save.xlsx", "base64")
-  data.worksheets[0].name.should.be.equal "sheet_1"
-  data.worksheets[0][0][0].should.be.equal "10"
-  data.worksheets[0][0][1].should.be.equal "ABC"
-  data.worksheets[0][1][0].should.be.equal "-10"
+    data = xlsx.decode fs.readFileSync("test/testout/save.xlsx", "base64")
+    data.worksheets[0].name.should.be.equal "sheet_1"
+    data.worksheets[0][0][0].should.be.equal "10"
+    data.worksheets[0][0][1].should.be.equal "ABC"
+    data.worksheets[0][1][0].should.be.equal "-10"
 
-  # data.worksheets[0][1][1].should.be.equal "あいう"
+    # data.worksheets[0][1][1].should.be.equal "あいう"
 
-  data.worksheets[0][2][0].should.be.equal "1.234"
-  data.worksheets[0][2][1].should.be.equal "41202"
+    data.worksheets[0][2][0].should.be.equal "1.234"
+    data.worksheets[0][2][1].should.be.equal "41202"
 
-  data.worksheets[1].name.should.be.equal "sheet_2"
-  data.worksheets[1][0][0].should.be.equal "9999"
-  data.worksheets[1][0][1].should.be.equal "AAAAA"
+    data.worksheets[1].name.should.be.equal "sheet_2"
+    data.worksheets[1][0][0].should.be.equal "9999"
+    data.worksheets[1][0][1].should.be.equal "AAAAA"
