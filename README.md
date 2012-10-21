@@ -4,6 +4,8 @@ This is base on https://github.com/stephen-hardy/xlsx.js
 
 samples/sample-read.js and sample-save.js are sample scriots.
 
+See test result on travis:   https://travis-ci.org/#!/katoy/node-xlsx
+
 Settins:
 ------------
     $ npm install
