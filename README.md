@@ -2,9 +2,9 @@
 Read/Write xlsx file.
 This is base on https://github.com/stephen-hardy/xlsx.js
 
-samples/sample-read.js and sample-save.js are sample scriots.
+samples/sample-read.coffee and sample-save.coffee are sample scripts.
 
-[![Build Status](https://secure.travis-ci.org/katoy/node-xlsx.png)](http://travis-ci.org/katoy/node-xlsx)  
+tarvis : [![Build Status](https://secure.travis-ci.org/katoy/node-xlsx.png)](http://travis-ci.org/katoy/node-xlsx)  
 
 
 Settins:
