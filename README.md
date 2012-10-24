@@ -7,9 +7,13 @@ samples/sample-read.coffee and sample-save.coffee are sample scripts.
 tarvis : [![Build Status](https://secure.travis-ci.org/katoy/node-xlsx.png)](http://travis-ci.org/katoy/node-xlsx)  
 
 
-Settins:
+Settings:
 ------------
     $ npm install
+
+checking
+----------
+    $npm test
 
 Cake:
 ------------
