@@ -17,7 +17,7 @@ exports.loadOutputJsonFile = (callback) ->
   oJson = require outputPath
   callback?()
 
-exports.compareXSLX = (f1, f2) ->
+exports.compareXLSX = (f1, f2) ->
   zip1 = new JSZip().load(fs.readFileSync(f1, "base64"), {base64: true})
   zip2 = new JSZip().load(fs.readFileSync(f2, "base64"), {base64: true})
 

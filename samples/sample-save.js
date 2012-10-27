@@ -1,11 +1,14 @@
-var JSZip = require('node-zip'),
-    fs = require('fs'),
-    xlsx = require('../lib//xlsx');
+var JSZip, binaryData, data1, data2, encodedData, filename, fs, sheet1, sheet2, workbook, xlsx;
 
-var workbook, sheet, r
+JSZip = require("node-zip");
+
+fs = require("fs");
+
+xlsx = require("../lib//xlsx");
 
 workbook = {
   worksheets: [],
+  data: [],
   creator: "Kato Youicho",
   created: new Date("2012-10-10"),
   lastModifiedBy: "Larry Jones",
@@ -13,37 +16,38 @@ workbook = {
   activeWorksheet: 0
 };
 
-sheet = [];
-workbook.worksheets.push(sheet);
-sheet.name = "sheet_1";
+sheet1 = [];
 
-r = sheet.push([]) - 1;
-sheet[r].push(10);
-sheet[r].push("ABC");
+sheet1.name = "sheet_1";
 
-r = sheet.push([]) - 1;
-sheet[r].push(-10);
-sheet[r].push("あいう");
+data1 = [[10, "ABC"], [-10, "あいう"], [1.234, new Date()]];
 
-r = sheet.push([]) - 1;
-sheet[r].push(1.234);
-sheet[r].push(new Date());
+sheet1.data = data1;
 
-sheet = [];
-workbook.worksheets.push(sheet);
-sheet.name = "sheet_2";
+sheet2 = [];
 
-r = sheet.push([]) - 1;
-sheet[r].push(9999);
-sheet[r].push("AAAAA");
+sheet2.name = "sheet_2";
+
+data2 = [[9999, "AAAAA"]];
+
+sheet2.data = data2;
+
+workbook.worksheets.push(sheet1);
+
+workbook.worksheets.push(sheet2);
+
+workbook.data.push([data1, data2]);
 
 workbook.created = new Date();
+
 workbook.modified = new Date();
 
-// encode and save
-var encodedData = xlsx.encode(workbook);
-var binaryData = new Buffer(encodedData["base64"], "base64");
-var filename = "testdata/save.xlsx"
+encodedData = xlsx.encode(workbook);
+
+binaryData = new Buffer(encodedData["base64"], "base64");
+
+filename = "testdata/save.xlsx";
+
 fs.writeFileSync(filename, binaryData);
 
 console.log("#---- Saved " + filename);

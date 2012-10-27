@@ -122,3 +122,8 @@ testdata/Formatting.js is https://github.com/apache/poi/blob/trunk/test-data/spr
 
 CakeFile and package.js are based at https://github.com/whitetrefoil/Xlsx2Json_node .
  
+History
+-------
+
+2010-10-27  Follow xlsx.js 2.0.0
+

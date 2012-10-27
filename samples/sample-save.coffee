@@ -1,50 +1,37 @@
-JSZip = require 'node-zip'
-fs = require 'fs'
-xlsx = require '../lib//xlsx'
-
-# Write xslx
-#------------------------
+JSZip = require("node-zip")
+fs = require("fs")
+xlsx = require("../lib//xlsx")
 workbook =
-  worksheets: [] # empty worksheet (array)
+  worksheets: []
+  data: []
   creator: "Kato Youicho"
   created: new Date("2012-10-10")
   lastModifiedBy: "Larry Jones"
   modified: new Date()
   activeWorksheet: 0
 
+#--- Build Sheet 1
+sheet1 = []
+sheet1.name = "sheet_1"
+data1 = [[10, "ABC"], [-10, "あいう"], [1.234, new Date()]]
+sheet1.data = data1
 
-# Shhet 1
-sheet = []
-workbook.worksheets.push(sheet)
+#--- Build Sheet 2
+sheet2 = []
+sheet2.name = "sheet_2"
+data2 = [[9999, "AAAAA"]]
+sheet2.data = data2
 
-sheet.name= "sheet_1"
-r = sheet.push([]) - 1
-sheet[r].push 10
-sheet[r].push "ABC"
-
-r = sheet.push([]) - 1
-sheet[r].push -10
-sheet[r].push "あいう"
-
-r = sheet.push([]) - 1
-sheet[r].push 1.234
-sheet[r].push new Date()
-
-# Shhet 2
-sheet = []
-workbook.worksheets.push(sheet)
-sheet.name = "sheet_2"
-r = sheet.push([]) - 1
-sheet[r].push 9999
-sheet[r].push "AAAAA"
-
-# worbook
+#--- Build workbook
+workbook.worksheets.push sheet1
+workbook.worksheets.push sheet2
+workbook.data.push [data1, data2]
 workbook.created = new Date()
 workbook.modified = new Date()
 
-# save
+#--- Encode and save
 encodedData = xlsx.encode(workbook)
 binaryData = new Buffer(encodedData["base64"], "base64")
 filename = "testdata/save.xlsx"
 fs.writeFileSync filename, binaryData
-console.log "#---- Saved #{filename}"
+console.log "#---- Saved " + filename
