@@ -62,27 +62,28 @@ describe 'Write XLSX ', ->
   it 'should same as in testref/save.xlsx', ->
     helper.compareXLSX("test/testout/save.xlsx", "test/testref/save.xlsx").should.be.equal true
 
-    data = xlsx.decode fs.readFileSync("test/testout/save.xlsx", "base64")
-    data.worksheets[0].name.should.be.equal "sheet_1"
-    data.worksheets[0].data[0][0].value.should.be.equal "10"
-    data.worksheets[0].data[0][1].should.be.equal "ABC"
-    data.worksheets[0].data[1][0].should.be.equal "-10"
-    # data.worksheets[0].data[1][1].should.be.equal "あいう"
+    book = xlsx.decode fs.readFileSync("test/testout/save.xlsx", "base64")
+    book.worksheets[0].name.should.be.equal "sheet_1"
+    book.worksheets[0].data[0][0].value.should.be.equal 10
+    book.worksheets[0].data[0][1].value.should.be.equal "ABC"
+    book.worksheets[0].data[1][0].value.should.be.equal -10
+    # book.worksheets[0].data[1][1].value.should.be.equal "あいう"
 
-    data.worksheets[0].data[2][0].should.be.equal "1.234"
-    data.worksheets[0].data[2][1].should.be.equal "41202"
+    book.worksheets[0].data[2][0].value.should.be.equal 1.234
+    book.worksheets[0].data[2][1].value.should.be.equal 41194.375
 
-    data.worksheets[1].name.should.be.equal "sheet_2"
-    data.worksheets[1].data[0][0].should.be.equal "9999"
-    data.worksheets[1].data[0][1].should.be.equal "AAAAA"
+    book.worksheets[1].name.should.be.equal "sheet_2"
+    book.worksheets[1].data[0][0].value.should.be.equal 9999
+    book.worksheets[1].data[0][1].value.should.be.equal "AAAAA"
 
-    # Access workseet.data[sheet][row][col]
-    data.worksheets.data[0][0][0].value.should.be.equal "10"
-    data.worksheets.data[0][0][1].should.be.equal "ABC"
-    data.worksheets.data[0][1][0].should.be.equal "-10"
-    # data.worksheets.data[0][1][1].should.be.equal "あいう"
-    data.worksheets.data[0][2][0].should.be.equal "1.234"
-    data.worksheets.data[0][2][1].should.be.equal "41202"
+    # Access data[sheet][row][col]
+    # console.log JSON.stringify(data.data, null, 4)
+    book.data[0][0][0].value.should.be.equal 10
+    book.data[0][0][1].value.should.be.equal "ABC"
+    book.data[0][1][0].value.should.be.equal -10
+    # book.data[0][1][1].should.be.equal "あいう"
+    book.data[0][2][0].value.should.be.equal 1.234
+    book.data[0][2][1].value.should.be.equal 41194.375
 
-    data.worksheets.data[1][0][0].should.be.equal "9999"
-    data.worksheets.data[1][0][1].should.be.equal "AAAAA"
+    book.data[1][0][0].value.should.be.equal 9999
+    book.data[1][0][1].value.should.be.equal "AAAAA"
