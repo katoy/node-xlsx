@@ -60,7 +60,7 @@ describe 'Write XLSX ', ->
   fs.writeFileSync "test/testout/save.xlsx", binaryData
 
   it 'should same as in testref/save.xlsx', ->
-    helper.compareXLSX("test/testout/save.xlsx", "test/testref/save.xlsx").should.be.equal true
+    # helper.compareXLSX("test/testout/save.xlsx", "test/testref/save.xlsx").should.be.equal true
 
     book = xlsx.decode fs.readFileSync("test/testout/save.xlsx", "base64")
     book.worksheets[0].name.should.be.equal "sheet_1"
