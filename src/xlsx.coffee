@@ -90,6 +90,7 @@ exports.decode = (file) -> # v2.0.0
   while --i
     id = getAttr(s[i], "numFmtId")
     f = numFmts[id]
+    f = "@" unless f
     if f.indexOf("m") > -1
       t = "date"
     else if f.indexOf("0") > -1

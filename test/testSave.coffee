@@ -62,18 +62,27 @@ describe 'Write XLSX ', ->
   it 'should same as in testref/save.xlsx', ->
     helper.compareXLSX("test/testout/save.xlsx", "test/testref/save.xlsx").should.be.equal true
 
-    #data = xlsx.decode fs.readFileSync("test/testout/save.xlsx", "base64")
-    #console.log JSON.stringify(data, null, 4)
-    #data.worksheets[0].name.should.be.equal "sheet_1"
-    #data.worksheets[0][0][0].should.be.equal "10"
-    #data.worksheets[0][0][1].should.be.equal "ABC"
-    #data.worksheets[0][1][0].should.be.equal "-10"
+    data = xlsx.decode fs.readFileSync("test/testout/save.xlsx", "base64")
+    data.worksheets[0].name.should.be.equal "sheet_1"
+    data.worksheets[0].data[0][0].value.should.be.equal "10"
+    data.worksheets[0].data[0][1].should.be.equal "ABC"
+    data.worksheets[0].data[1][0].should.be.equal "-10"
+    # data.worksheets[0].data[1][1].should.be.equal "あいう"
 
-    # data.worksheets[0][1][1].should.be.equal "あいう"
+    data.worksheets[0].data[2][0].should.be.equal "1.234"
+    data.worksheets[0].data[2][1].should.be.equal "41202"
 
-    #data.worksheets[0][2][0].should.be.equal "1.234"
-    #data.worksheets[0][2][1].should.be.equal "41202"
+    data.worksheets[1].name.should.be.equal "sheet_2"
+    data.worksheets[1].data[0][0].should.be.equal "9999"
+    data.worksheets[1].data[0][1].should.be.equal "AAAAA"
 
-    #data.worksheets[1].name.should.be.equal "sheet_2"
-    #data.worksheets[1][0][0].should.be.equal "9999"
-    #data.worksheets[1][0][1].should.be.equal "AAAAA"
+    # Access workseet.data[sheet][row][col]
+    data.worksheets.data[0][0][0].value.should.be.equal "10"
+    data.worksheets.data[0][0][1].should.be.equal "ABC"
+    data.worksheets.data[0][1][0].should.be.equal "-10"
+    # data.worksheets.data[0][1][1].should.be.equal "あいう"
+    data.worksheets.data[0][2][0].should.be.equal "1.234"
+    data.worksheets.data[0][2][1].should.be.equal "41202"
+
+    data.worksheets.data[1][0][0].should.be.equal "9999"
+    data.worksheets.data[1][0][1].should.be.equal "AAAAA"
