@@ -145,7 +145,7 @@ test = () ->
     error 'cannot find executable `mocha`'
     error 'check which coffee'
     return
-  mocha = spawn mochaPath, ["--compilers", "coffee:coffee-script", "--reporter", "tap"]
+  mocha = spawn mochaPath, ["--compilers", "coffee:coffee-script", "--reporter", "tap" "--timeout", "50000"]
   mocha.stdout.on 'data', (data) -> puts data
   mocha.stderr.on 'data', (data) -> error data
   mocha.on 'close', -> success 'finished'
