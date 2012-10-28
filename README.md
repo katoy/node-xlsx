@@ -37,67 +37,294 @@ Sample run:
 This script reads testdata/Formating.js and show parsed results in json format.
 
     $ coffee sample-read.coffee 
+    
+    ntsitm293174:samples youichikato$ coffee sample-read.coffee 
     {
         "worksheets": [
+            {
+                "name": "Sheet1",
+                "data": [
+                    [
+                        {
+                            "value": "Dates, all 24th November 2006",
+                            "formatCode": "GENERAL"
+                        }
+                    ],
+                    [
+                        {
+                            "value": "dd/mm/yyyy",
+                            "formatCode": "GENERAL"
+                        },
+                        {
+                            "value": 39045,
+                            "formatCode": "YYYY/MM/DD"
+                        }
+                    ],
+                    [
+                        {
+                            "value": "yyyy/mm/dd",
+                            "formatCode": "GENERAL"
+                        },
+                        {
+                            "value": 39045,
+                            "formatCode": "YYYY/MM/DD"
+                        }
+                    ],
+                    [
+                        {
+                            "value": "yyyy-mm-dd",
+                            "formatCode": "GENERAL"
+                        },
+                        {
+                            "value": 39045,
+                            "formatCode": "YYYY\\-MM\\-DD"
+                        }
+                    ],
+                    [
+                        {
+                            "value": "yy/mm/dd",
+                            "formatCode": "GENERAL"
+                        },
+                        {
+                            "value": 39045,
+                            "formatCode": "YY/MM/DD"
+                        }
+                    ],
+                    [
+                        {
+                            "value": "dd/mm/yy",
+                            "formatCode": "GENERAL"
+                        },
+                        {
+                            "value": 39045,
+                            "formatCode": "D/M/YY;@"
+                        }
+                    ],
+                    [
+                        {
+                            "value": "dd-mm-yy",
+                            "formatCode": "GENERAL"
+                        },
+                        {
+                            "value": 39045,
+                            "formatCode": "DD\\-MM\\-YY"
+                        }
+                    ],
+                    [
+                        {
+                            "value": null,
+                            "formatCode": "DD\\-MM\\-YY"
+                        }
+                    ],
+                    [
+                        {
+                            "value": "Numbers, all 10.52",
+                            "formatCode": "GENERAL"
+                        }
+                    ],
+                    [
+                        {
+                            "value": "nn.nn",
+                            "formatCode": "GENERAL"
+                        },
+                        {
+                            "value": 10.52,
+                            "formatCode": "GENERAL"
+                        }
+                    ],
+                    [
+                        {
+                            "value": "nn.nnn",
+                            "formatCode": "GENERAL"
+                        },
+                        {
+                            "value": 10.52,
+                            "formatCode": "0.000"
+                        }
+                    ],
+                    [
+                        {
+                            "value": "nn.n",
+                            "formatCode": "GENERAL"
+                        },
+                        {
+                            "value": 10.52,
+                            "formatCode": "0.0"
+                        }
+                    ],
+                    [
+                        {
+                            "value": "Â£nn.nn",
+                            "formatCode": "GENERAL"
+                        },
+                        {
+                            "value": 10.52,
+                            "formatCode": "\\Â£#,##0.00"
+                        }
+                    ]
+                ],
+                "table": false
+            },
+            {
+                "name": "Sheet2",
+                "data": [
+                    [
+                        {
+                            "value": 1,
+                            "formatCode": "GENERAL"
+                        }
+                    ]
+                ],
+                "table": false
+            },
+            {
+                "name": "Sheet3",
+                "data": [
+                    [
+                        {
+                            "value": 2,
+                            "formatCode": "GENERAL"
+                        }
+                    ]
+                ],
+                "table": false
+            }
+        ],
+        "data": [
             [
                 [
-                    "Dates, all 24th November 2006"
+                    {
+                        "value": "Dates, all 24th November 2006",
+                        "formatCode": "GENERAL"
+                    }
                 ],
                 [
-                    "dd/mm/yyyy",
-                    39045
+                    {
+                        "value": "dd/mm/yyyy",
+                        "formatCode": "GENERAL"
+                    },
+                    {
+                        "value": 39045,
+                        "formatCode": "YYYY/MM/DD"
+                    }
                 ],
                 [
-                    "yyyy/mm/dd",
-                    39045
+                    {
+                        "value": "yyyy/mm/dd",
+                        "formatCode": "GENERAL"
+                    },
+                    {
+                        "value": 39045,
+                        "formatCode": "YYYY/MM/DD"
+                    }
                 ],
                 [
-                    "yyyy-mm-dd",
-                    39045
+                    {
+                        "value": "yyyy-mm-dd",
+                        "formatCode": "GENERAL"
+                    },
+                    {
+                        "value": 39045,
+                        "formatCode": "YYYY\\-MM\\-DD"
+                    }
                 ],
                 [
-                    "yy/mm/dd",
-                    39045
+                    {
+                        "value": "yy/mm/dd",
+                        "formatCode": "GENERAL"
+                    },
+                    {
+                        "value": 39045,
+                        "formatCode": "YY/MM/DD"
+                    }
                 ],
                 [
-                    "dd/mm/yy",
-                    39045
+                    {
+                        "value": "dd/mm/yy",
+                        "formatCode": "GENERAL"
+                    },
+                {
+                    "value": 39045,
+                    "formatCode": "D/M/YY;@"
+                }
+            ],
+                [
+                    {
+                        "value": "dd-mm-yy",
+                        "formatCode": "GENERAL"
+                    },
+                    {
+                        "value": 39045,
+                        "formatCode": "DD\\-MM\\-YY"
+                    }
                 ],
                 [
-                    "dd-mm-yy",
-                    39045
+                    {
+                        "value": null,
+                        "formatCode": "DD\\-MM\\-YY"
+                    }
                 ],
                 [
-                    null
+                    {
+                        "value": "Numbers, all 10.52",
+                        "formatCode": "GENERAL"
+                    }
                 ],
                 [
-                    "Numbers, all 10.52"
+                    {
+                        "value": "nn.nn",
+                        "formatCode": "GENERAL"
+                    },
+                    {
+                        "value": 10.52,
+                        "formatCode": "GENERAL"
+                    }
                 ],
                 [
-                    "nn.nn",
-                    10.52
+                    {
+                        "value": "nn.nnn",
+                        "formatCode": "GENERAL"
+                    },
+                    {
+                        "value": 10.52,
+                        "formatCode": "0.000"
+                    }
                 ],
                 [
-                    "nn.nnn",
-                    10.52
+                    {
+                        "value": "nn.n",
+                        "formatCode": "GENERAL"
+                    },
+                    {
+                        "value": 10.52,
+                        "formatCode": "0.0"
+                    }
                 ],
                 [
-                    "nn.n",
-                    10.52
-                ],
-                [
-                    "Â£nn.nn",
-                    10.52
+                    {
+                        "value": "Â£nn.nn",
+                        "formatCode": "GENERAL"
+                    },
+                    {
+                        "value": 10.52,
+                        "formatCode": "\\Â£#,##0.00"
+                    }
                 ]
             ],
             [
                 [
-                    1
+                    {
+                        "value": 1,
+                        "formatCode": "GENERAL"
+                    }
                 ]
             ],
             [
                 [
-                    2
+                    {
+                        "value": 2,
+                        "formatCode": "GENERAL"
+                    }
                 ]
             ]
         ],
@@ -109,7 +336,6 @@ This script reads testdata/Formating.js and show parsed results in json format.
         "activeWorksheet": 0,
         "processTime": 0
     }
-
 
     $ node sampel-save.js
 
