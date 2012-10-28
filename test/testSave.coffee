@@ -1,6 +1,5 @@
 
 #### Include test framework
-
 helper = require('./helper')
 
 chai = require 'chai'
@@ -60,30 +59,42 @@ describe 'Write XLSX ', ->
   fs.writeFileSync "test/testout/save.xlsx", binaryData
 
   it 'should same as in testref/save.xlsx', ->
-    # helper.compareXLSX("test/testout/save.xlsx", "test/testref/save.xlsx").should.be.equal true
+    helper.compareXLSX("test/testout/save.xlsx", "test/testref/save.xlsx").should.be.equal true
 
     book = xlsx.decode fs.readFileSync("test/testout/save.xlsx", "base64")
+
+    book.worksheets.length.should.be.equal 2  # num of sheets
+    book.worksheets[0].data.length.should.be.equal 3 # num row of sheets[0]
+    book.worksheets[0].data[0].length.should.be.equal 2 # num col of sheets[0] row[0]
+    book.worksheets[0].data[1].length.should.be.equal 2 # num col of sheets[0] row[0]
+    book.worksheets[0].data[2].length.should.be.equal 2 # num col of sheets[0] row[0]
+
+    book.worksheets[1].data.length.should.be.equal 1 # num row of sheets[1]
+    book.worksheets[1].data[0].length.should.be.equal 2 # num col of sheets[1] row[0]
+
     book.worksheets[0].name.should.be.equal "sheet_1"
-    book.worksheets[0].data[0][0].value.should.be.equal 10
-    book.worksheets[0].data[0][1].value.should.be.equal "ABC"
-    book.worksheets[0].data[1][0].value.should.be.equal -10
-    # book.worksheets[0].data[1][1].value.should.be.equal "あいう"
 
-    book.worksheets[0].data[2][0].value.should.be.equal 1.234
-    # book.worksheets[0].data[2][1].value.should.be.equal 41194.375
+    book.worksheets[0].data[0][0].should.be.eql { value: 10, formatCode: 'General' }
+    book.worksheets[0].data[0][1].should.be.eql { value: "ABC", formatCode: 'General' }
+    book.worksheets[0].data[1][0].should.be.eql { value: -10, formatCode: 'General' }
+    # book.worksheets[0].data[1][1].should.be.eql { value: "あいう", formatCode: 'General' }
+    book.worksheets[0].data[2][0].should.be.eql { value: 1.234, formatCode: 'General' }
+    book.worksheets[0].data[2][1].should.be.eql { value: 41192, formatCode: 'mm-dd-yy' }
 
-    book.worksheets[1].name.should.be.equal "sheet_2"
-    book.worksheets[1].data[0][0].value.should.be.equal 9999
-    book.worksheets[1].data[0][1].value.should.be.equal "AAAAA"
+    book.worksheets[1].data[0][0].should.be.eql { value: 9999, formatCode: 'General' }
+    book.worksheets[1].data[0][1].should.be.eql { value: "AAAAA", formatCode: 'General' }
 
     # Access data[sheet][row][col]
     # console.log JSON.stringify(data.data, null, 4)
-    book.data[0][0][0].value.should.be.equal 10
-    book.data[0][0][1].value.should.be.equal "ABC"
-    book.data[0][1][0].value.should.be.equal -10
-    # book.data[0][1][1].should.be.equal "あいう"
-    book.data[0][2][0].value.should.be.equal 1.234
-    # book.data[0][2][1].value.should.be.equal 41194.375
+    book.data[0][0][0].should.be.eql { value: 10, formatCode: 'General' }
+    book.data[0][0][1].should.be.eql { value: "ABC", formatCode: 'General' }
 
-    book.data[1][0][0].value.should.be.equal 9999
-    book.data[1][0][1].value.should.be.equal "AAAAA"
+    book.data[0][1][0].should.be.eql { value: -10, formatCode: 'General' }
+    # book.data[0][1][1].should.be.eql { value: "あいう", formatCode: 'General' }
+
+    book.data[0][2][0].should.be.eql { value: 1.234, formatCode: 'General' }
+    book.data[0][2][1].should.be.eql { value: 41192, formatCode: 'mm-dd-yy' }
+    xlsx.convertDate(book.data[0][2][1].value).should.be.eql new Date("2012-10-12")
+
+    book.data[1][0][0].should.be.eql { value: 9999, formatCode: 'General' }
+    book.data[1][0][1].should.be.eql { value: "AAAAA", formatCode: 'General' }

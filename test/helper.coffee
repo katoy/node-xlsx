@@ -1,4 +1,4 @@
-
+dateFormat = require 'dateformat'
 fs = require 'fs'
 JSZip = require 'node-zip'
 

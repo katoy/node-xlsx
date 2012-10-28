@@ -12,13 +12,24 @@ getAttr = (s, n) ->
   s = s.substr(s.indexOf(n + "=\"") + n.length + 2)
   s.substring 0, s.indexOf("\"")
 
+# 1 -> "A", 2 -> "B", ... 26 -> "Z", 27 -> "AA!, 28 -> "AB", ...
 alphabet = (i) ->
   s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   t = Math.floor(i / 26) - 1
   ((if t > -1 then alphabet(t) else "")) + s.charAt(i % 26)
 
+START_DAY = new Date("1900-01-01");
+
+# 0 <--> Date(1900-01-01), 1 <--> Datde(1900-01-020 ...
 convertDate = (input) ->
-  (if typeof input is "object" then ((input - new Date(1900, 0, 0)) / 86400000) + 1 else new Date(+new Date(1900, 0, 0) + (input - 1) * 86400000))
+  if typeof input is "object"
+    ((input - START_DAY) / 86400000)
+  else
+    d = new Date("1900-01-01")
+    d.setTime(d.getTime() + input * 86400000)
+    d
+
+exports.convertDate = convertDate
 
 numFmts = ["General", "0", "0.00", "#,##0", "#,##0.00", null, null, null, null, "0%", "0.00%", "0.00E+00", "# ?/?", "# ??/??", "mm-dd-yy", "d-mmm-yy", "d-mmm", "mmm-yy", "h:mm AM/PM", "h:mm:ss AM/PM", "h:mm", "h:mm:ss", "m/d/yy h:mm", null, null, null, null, null, null, null, null, null, null, null, null, null, null, "#,##0 ;(#,##0)", "#,##0 ;[Red](#,##0)", "#,##0.00;(#,##0.00)", "#,##0.00;[Red](#,##0.00)", null, null, null, null, "mm:ss", "[h]:mm:ss", "mmss.0", "##0.0E+0", "@"]
 
