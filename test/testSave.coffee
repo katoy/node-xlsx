@@ -11,7 +11,7 @@ JSZip = require 'node-zip'
 
 #### Pre-define file paths
 
-libPath = 'lib/xlsx'
+libPath = if (process.env.TEST_COV) then 'lib-cov/xlsx' else  'lib/xlsx'
 inputPath  = 'test/testdata/Formatting.xlsx'
 outputPath = 'test/testdata/Formatting.json'
 referPath  = 'test/testref/Formatting.json'

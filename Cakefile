@@ -64,7 +64,8 @@ task 'doc', 'generate documents', (options) -> doc(options)
 task 'clean:all', 'clean pervious built js files and documents', (options) -> clean 'all', options.force
 task 'clean:js', 'clean pervious built js files', (options) -> clean 'js', options.force
 task 'clean:doc', 'clean pervious built documents', (options) -> clean 'doc', options.force
-task 'test', 'do test', -> test()
+task 'test', 'do test', (options) -> test(options)
+task 'coverage', 'do coverage', (options) -> coverage(options)
 
 # Task Functions
 build = (options) ->
@@ -138,7 +139,7 @@ clean = (target = 'all', isForce = false) ->
               puts "Deleting #{dp}"
               if isExt then fs.unlink dp
 
-test = () ->
+test = (options) ->
   try
     mochaPath = which 'mocha'
   catch e
@@ -149,6 +150,13 @@ test = () ->
   mocha.stdout.on 'data', (data) -> puts data
   mocha.stderr.on 'data', (data) -> error data
   mocha.on 'close', -> success 'finished'
+
+coverage = (options) ->
+  puts "Do following."
+  puts '  $ rm -fr lib-cov'
+  puts '  $ jscoverage lib lib-cov'
+  puts '  $ TEST_COV=1 mocha --reporter html-cov > coverage.html'
+  puts ''
 
 # Helper Functions
 puts = (data) ->

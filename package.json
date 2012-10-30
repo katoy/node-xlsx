@@ -18,12 +18,13 @@
 	"docco": "*",
 	"mkdirp": "*",
 	"rimraf":"*",
-	"which": "*"
+	"which": "*",
+	"jscoverage": "*"
     },
     "engines": {
 	"node": ">=0.8.11"
     },
     "scripts": {
-	"test": "mocha --compilers coffee:coffee-script --reporter spec"
+	"test": "mocha"
     }
 }
