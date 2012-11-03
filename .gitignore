@@ -5,6 +5,7 @@ Thumbs.db
 *.log
 .DS_Store
 samples/.DS_Store
+samples/testdata/save.xlsx
 lib/.DS_Store
 docs
 test/testout
