@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title> - jsFiddle demo by innovatejs</title> 
+    <script type='text/javascript' src='http://code.jquery.com/jquery-1.8.2.js'></script>
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+    <script type='text/javascript' src="./js/browser_xlsx.js"></script>
+    <script type='text/javascript' src="./js/jszip.js"></script>
+    <script type='text/javascript' src="./js/jszip-load.js"></script>
+    <script type='text/javascript' src="./js/jszip-inflate.js"></script>
+    <script type='text/javascript' src="./js/jszip-deflate.js"></script>
+    <script type='text/javascript' src="./js/mine.js"></script>
+  </head>
+
+  <body>
+
+    Worksheet Name:<input type="text" value="CustomName" id="WName"/>
+    <br/><br/>
+    <table id="Worksheet1">
+      <tr>
+        <td><input type="text" value="Person"/></td>
+        <td><input type="text" value="Dogs"/></td>
+        <td><input type="text" value="Birds"/></td>
+        <td><input type="text" value="Cats"/></td>
+      </tr>
+      <tr>
+        <td><input type="text" value="Mary"/></td>
+        <td><input type="text" value="0"/></td>
+        <td><input type="text" value="0"/></td>
+        <td><input type="text" value="4"/></td>
+      </tr>
+      <tr>
+        <td><input type="text" value="Bob"/></td>
+        <td><input type="text" value="4"/></td>
+        <td><input type="text" value="1"/></td>
+        <td><input type="text" value="0"/></td>
+      </tr>
+      <tr>
+        <td><input type="text" value="John"/></td>
+        <td><input type="text" value="1"/></td>
+        <td><input type="text" value="2"/></td>
+        <td><input type="text" value="0"/></td>
+      </tr>
+    </table>
+    <br/><button id="save">Save</button>
+
+    <section>
+      See: <br/>
+      <a href="http://jsfiddle.net/innovatejs/ueETX/">http://jsfiddle.net/innovatejs/ueETX/</a> <br/>
+      <a href="http://blog.innovatejs.com/?p=50">http://blog.innovatejs.com/?p=50</a><br/>
+
+      <br/>
+      Setup: </br>
+<pre>
+   $ cd samples2
+   $ ./make_js_for_browser.sh
+</pre>
+Then , open samples2/index.html in firefox or chrome.<br/>
+Edit cell values, and press button [save].
+    </section>
+
+  </body>
+</html>
