@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://gokercebeci.com/dev/droparea -->
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>droparea</title>
+        <script type='text/javascript' src='http://code.jquery.com/jquery-1.8.2.js'></script>
+        <script type='text/javascript' src="./js/browser_xlsx.js"></script>
+        <script type='text/javascript' src="./js/jszip.js"></script>
+        <script type='text/javascript' src="./js/jszip-load.js"></script>
+        <script type='text/javascript' src="./js/jszip-inflate.js"></script>
+        <script type='text/javascript' src="./js/jszip-deflate.js"></script>
+        <script type='text/javascript' src="./js/base64.js"></script>
+        <script type='text/javascript' src="./js/mine.js"></script>
+
+        <!--[if IE 8]><script src="//gokercebeci.com/themes/default/js/ie8.js"></script><![endif]-->
+        <link rel="stylesheet" href="./css/default,dev,dev.css">
+        <link rel="stylesheet" href="./css/style.css">
+
+    </head>
+
+    <body>
+        <section style="margin: 10px;">
+            <div> Select or Drop file(s).</div>
+            <input type="file" id="files" name="files[]" multiple />
+            <div id="drop_zone">Drop files here</div>
+            <h2>List <button id="clean">Clean List</button></h2>
+            <output id="list"></output>
+        </section>
+    </body>
+</html>
