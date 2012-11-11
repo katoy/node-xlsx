@@ -18,6 +18,21 @@ alphabet = (i) ->
   t = Math.floor(i / 26) - 1
   ((if t > -1 then alphabet(t) else "")) + s.charAt(i % 26)
 
+# "A" -> 1
+col2num = (col) ->
+  if (col.length == 1)
+    ans = (col.charCodeAt(0) - 'A'.charCodeAt(0) + 1)
+  else
+    ans = ((col.charCodeAt(1) - 'A'.charCodeAt(0) + 1)) * 26 + (col.charCodeAt(0) - 'A'.charAreaCount() + 1)
+  console.log "col2num -> #{ans}"
+  ans
+
+# "A2" --> [1,2]
+ref2cr = (ref) ->
+  c = ref.replace(/[0-9]/g, '')
+  r = ref.replace(/[A-Z]/g, '')
+  [col2num(c), parseInt(r, 10)]
+
 START_DAY = new Date("1900-01-01");
 
 # 0 <--> Date(1900-01-01), 1 <--> Datde(1900-01-020 ...
@@ -121,6 +136,13 @@ exports.decode = (file) -> # v2.0.0
     s = zip.files["xl/worksheets/sheet" + (i + 1) + ".xml"].data.split("<row ")
     w = result.worksheets[i]
     w.table = s[0].indexOf("<tableParts ") > 0
+
+    merges = zip.files["xl/worksheets/sheet" + (i + 1) + ".xml"].data.split("mergeCells")
+    if merges.length > 1
+      w.mergeCells = []
+      m = merges[1].split('"')
+      w.mergeCells.unshift( ref2cr(m[k]) ) for k in [3 ... (m.length - 1)] by 2
+
     w = w.data
     j = s.length
     while --j # Don't process j === 0, because s[0] is the text before the first row element

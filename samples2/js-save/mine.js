@@ -129,9 +129,15 @@ $(window).load(function() {
     };
     
     // Setup the dnd listeners.
-    document.getElementById('drop_zone').addEventListener('dragover', handleDragOver, false);
-    document.getElementById('drop_zone').addEventListener('drop', handleFileSelect, false);
-    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    if (document.getElementById('drop_zone')) {
+        document.getElementById('drop_zone').addEventListener('dragover', handleDragOver, false);
+        document.getElementById('drop_zone').addEventListener('drop', handleFileSelect, false);
+    }
+
+    if (document.getElementById('files')) {
+        document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    }
+
     document.getElementById('clean').onclick = function() {
         document.getElementById('list').innerHTML = "";
     };

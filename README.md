@@ -9,27 +9,49 @@ tarvis : [![Build Status](https://secure.travis-ci.org/katoy/node-xlsx.png)](htt
 
 Settings:
 ------------
+
     $ npm install
 
-checking
+Checking
 ----------
+
     $npm test
 
 Cake:
 ------------
+
     $ cake
-    Cakefile defines the following tasks:
+    Cakefile defines the following tasks:  
+      
+    cake build                # build coffee scripts into js  
+    cake lint                 # lint coffee scripts  
+    cake doc                  # generate documents  
+    cake clean:all            # clean pervious built js files and documents  
+    cake clean:js             # clean pervious built js files  
+    cake clean:doc            # clean pervious built documents  
+    cake test                 # do test  
+    cake coverage             # do coverage  
+      
+    -w, --watch        continually build  
+    -f, --force        clean all files in output folder whatever they're compilation outputs or anything else  
+    -r, --rebuild      do relative cleaning tasks before build js or generate documents  
+
+
+Sample run in Browser:
+-----------------------
+
+    $ cd samples2
+    $ ./make_js_for_browser.sh
     
-    cake build                # build coffee scripts into js
-    cake lint                 # lint coffee scripts
-    cake doc                  # generate documents
-    cake clean:all            # clean pervious built js files and documents
-    cake clean:js             # clean pervious built js files
-    cake clean:doc            # clean pervi    
+    
+And Open samples2/index1.html, or samples2/index2.html in firefox or chrome.  
+On index1.html, Edit the table, press [save], it will generate xlsx file,  
+On index2.html, Select or Drop xlsx file(s), it show the content on the web page.  
+(no nees server, it works on server-side)  
 
+Sample run ib CLI:
+------------------
 
-Sample run:
------------
     $ cd samples
     $ coffee sample-read.js
 
