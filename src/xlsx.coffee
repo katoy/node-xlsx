@@ -56,9 +56,8 @@ exports.decode = (file) -> # v2.0.0
   worksheets = []
 
   zipTime = Date.now()
-  zip = zip.load(file,
-    base64: true
-  )
+
+  zip = zip.load(file, {checkCRC32:true, base64:true})
   result =
     worksheets: []
     data: []
@@ -69,13 +68,13 @@ exports.decode = (file) -> # v2.0.0
   #{ Process sharedStrings
   sharedStrings = []
   if zip.files["xl/sharedStrings.xml"]
-    s = zip.files["xl/sharedStrings.xml"].data.split("<t>")
+    s = zip.file("xl/sharedStrings.xml").asText().split("<t>")
     i = s.length
     sharedStrings[i - 1] = s[i].substring(0, s[i].indexOf("<"))  while --i # Do not process i === 0, because s[0] is the text before first t element
   #}
 
   #{ Get file info from "docProps/core.xml"
-  s = zip.files["docProps/core.xml"].data
+  s = zip.file("docProps/core.xml").asText()
   s = s.substr(s.indexOf("<dc:creator>") + 12)
   result.creator = s.substring(0, s.indexOf("</dc:creator>"))
   s = s.substr(s.indexOf("<cp:lastModifiedBy>") + 19)
@@ -87,7 +86,7 @@ exports.decode = (file) -> # v2.0.0
   #}
 
   #{ Get workbook info from "xl/workbook.xml" - Worksheet names exist in other places, but "activeTab" attribute must be gathered from this file anyway
-  s = zip.files["xl/workbook.xml"].data
+  s = zip.file("xl/workbook.xml").asText()
   index = s.indexOf("activeTab=\"")
   if index > 0
     s = s.substr(index + 11) # Must eliminate first 11 characters before finding the index of " on the next line. Otherwise, it finds the " before the value.
@@ -105,7 +104,7 @@ exports.decode = (file) -> # v2.0.0
 
   #{ Get style info from "xl/styles.xml"
   styles = []
-  s = zip.files["xl/styles.xml"].data.split("<numFmt ")
+  s = zip.file("xl/styles.xml").asText().split("<numFmt ")
   i = s.length
   while --i
     t = s[i]
@@ -133,11 +132,11 @@ exports.decode = (file) -> # v2.0.0
   #{ Get worksheet info from "xl/worksheets/sheetX.xml"
   i = result.worksheets.length
   while i--
-    s = zip.files["xl/worksheets/sheet" + (i + 1) + ".xml"].data.split("<row ")
+    s = zip.file("xl/worksheets/sheet" + (i + 1) + ".xml").asText().split("<row ")
     w = result.worksheets[i]
     w.table = s[0].indexOf("<tableParts ") > 0
 
-    merges = zip.files["xl/worksheets/sheet" + (i + 1) + ".xml"].data.split("mergeCells")
+    merges = zip.file("xl/worksheets/sheet" + (i + 1) + ".xml").asText().split("mergeCells")
     if merges.length > 1
       w.mergeCells = []
       m = merges[1].split('"')

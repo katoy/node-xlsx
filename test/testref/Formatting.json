@@ -113,12 +113,12 @@
                 ],
                 [
                     {
-                        "value": "Â£nn.nn",
+                        "value": "£nn.nn",
                         "formatCode": "GENERAL"
                     },
                     {
                         "value": 10.52,
-                        "formatCode": "\\Â£#,##0.00"
+                        "formatCode": "\\£#,##0.00"
                     }
                 ]
             ],
@@ -261,12 +261,12 @@
             ],
             [
                 {
-                    "value": "Â£nn.nn",
+                    "value": "£nn.nn",
                     "formatCode": "GENERAL"
                 },
                 {
                     "value": 10.52,
-                    "formatCode": "\\Â£#,##0.00"
+                    "formatCode": "\\£#,##0.00"
                 }
             ]
         ],
@@ -287,11 +287,11 @@
             ]
         ]
     ],
-    "zipTime": 0,
+    "zipTime": 56,
     "creator": "",
     "lastModifiedBy": "",
     "created": null,
     "modified": null,
     "activeWorksheet": 0,
-    "processTime": 0
+    "processTime": 3
 }

@@ -77,7 +77,7 @@ describe 'Write XLSX ', ->
     book.worksheets[0].data[0][0].should.be.eql { value: 10, formatCode: 'General' }
     book.worksheets[0].data[0][1].should.be.eql { value: "ABC", formatCode: 'General' }
     book.worksheets[0].data[1][0].should.be.eql { value: -10, formatCode: 'General' }
-    # book.worksheets[0].data[1][1].should.be.eql { value: "あいう", formatCode: 'General' }
+    book.worksheets[0].data[1][1].should.be.eql { value: "あいう", formatCode: 'General' }
     book.worksheets[0].data[2][0].should.be.eql { value: 1.234, formatCode: 'General' }
     book.worksheets[0].data[2][1].should.be.eql { value: 41192, formatCode: 'mm-dd-yy' }
 
@@ -90,7 +90,7 @@ describe 'Write XLSX ', ->
     book.data[0][0][1].should.be.eql { value: "ABC", formatCode: 'General' }
 
     book.data[0][1][0].should.be.eql { value: -10, formatCode: 'General' }
-    # book.data[0][1][1].should.be.eql { value: "あいう", formatCode: 'General' }
+    book.data[0][1][1].should.be.eql { value: "あいう", formatCode: 'General' }
 
     book.data[0][2][0].should.be.eql { value: 1.234, formatCode: 'General' }
     book.data[0][2][1].should.be.eql { value: 41192, formatCode: 'mm-dd-yy' }
