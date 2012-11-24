@@ -166,7 +166,7 @@ error = (data) ->
   _output data, red, 'ERR'
 
 success = (data) ->
-  _output data, green, 'SCC'
+  _output data, green, 'OK'
 
 fail = (data) ->
   _output data, red, 'FAIL'

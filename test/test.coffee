@@ -37,6 +37,6 @@ describe 'The library file', ->
 describe 'The functions', ->
   xlsx = require libPath
   it 'should be accessible: decode', ->
-    (typeof xlsx.decode).should.be.equal 'function'
+    (typeof xlsx.decode).should.be.equal 'function', "check exists xlsx.decode()"
   it 'should be accessible: encode', ->
-    (typeof xlsx.encode).should.be.equal 'function'
+    (typeof xlsx.encode).should.be.equal 'function', "check exists xlsx.encode()"

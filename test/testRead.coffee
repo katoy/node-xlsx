@@ -47,4 +47,4 @@ describe 'When convert to memory,', ->
 
       x = JSON.stringify(workbook, null, 4)
       y = JSON.stringify(rJson, null, 4)
-      x.should.be.deep.equal y
+      x.should.be.deep.equal y, "check json(s)"

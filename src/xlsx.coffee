@@ -35,6 +35,24 @@ ref2cr = (ref) ->
   r = ref.replace(/[A-Z]/g, '')
   [col2num(c), parseInt(r, 10)]
 
+# '&<> --> &quot;%anp;&lt;&gt;
+escape = (s) ->
+  return s if !s
+  s.replace(/&/g, '&amp;').
+    replace(/</g, '&lt;').
+    replace(/>/g, '&gt;').
+    replace(/\"/g, '&quot;').
+    replace(/\'/g, '&apos;')
+
+# '&<> <-- &quot;%anp;&lt;&gt;
+unescape = (s) ->
+  return s if !s
+  s.replace(/&amp;/g, '&').
+    replace(/&lt;/g, '<').
+    replace(/&gt;/g, '>').
+    replace(/&quot;/g, '"').
+    replace(/&apos;/g, "'")
+
 START_DAY = new Date("1900-01-01");
 
 # 0 <--> Date(1900-01-01), 1 <--> Datde(1900-01-02) ...
@@ -72,7 +90,7 @@ exports.decode = (file) -> # v2.0.0
   if zip.files["xl/sharedStrings.xml"]
     s = zip.file("xl/sharedStrings.xml").asText().split("<t>")
     i = s.length
-    sharedStrings[i - 1] = s[i].substring(0, s[i].indexOf("<"))  while --i # Do not process i === 0, because s[0] is the text before first t element
+    sharedStrings[i - 1] = unescape(s[i].substring(0, s[i].indexOf("<")))  while --i # Do not process i === 0, because s[0] is the text before first t element
   #}
 
   #{ Get file info from "docProps/core.xml"
@@ -100,7 +118,7 @@ exports.decode = (file) -> # v2.0.0
   while --i # Do not process i === 0, because s[0] is the text before the first sheet element
     id = s[i].substr(s[i].indexOf("name=\"") + 6)
     result.worksheets.unshift
-      name: id.substring(0, id.indexOf("\""))
+      name: unescape id.substring(0, id.indexOf("\""))
       data: []
   #}
 
@@ -223,7 +241,7 @@ exports.encode = (file) -> # v2.0.0
         if val and typeof val is "string" and isNaN(parseFloat(val)) # If value is string, and not string of just a number, place a sharedString reference instead of the value
           sharedStrings[1]++ # Increment total count, unique count derived from sharedStrings[0].length
           index = sharedStrings[0].indexOf(val)
-          index = sharedStrings[0].push(val) - 1  if index < 0
+          index = sharedStrings[0].push(escape(val)) - 1  if index < 0
           val = index
           t = "s"
         else if typeof val is "boolean"
@@ -258,7 +276,7 @@ exports.encode = (file) -> # v2.0.0
     contentTypes[0].unshift "<Override PartName=\"/xl/worksheets/sheet" + id + ".xml\" ContentType=\"application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml\"/>"
     props.unshift worksheet.name or "Sheet" + id
     xlRels.unshift "<Relationship Id=\"rId" + id + "\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet\" Target=\"worksheets/sheet" + id + ".xml\"/>"
-    worksheets.unshift "<sheet name=\"" + (worksheet.name or "Sheet" + id) + "\" sheetId=\"" + id + "\" r:id=\"rId" + id + "\"/>"
+    worksheets.unshift "<sheet name=\"" + escape((worksheet.name or "Sheet" + id)) + "\" sheetId=\"" + id + "\" r:id=\"rId" + id + "\"/>"
 
   #{ xl/styles.xml
   i = styles.length
