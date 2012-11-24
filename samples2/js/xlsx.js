@@ -21,10 +21,10 @@
   col2num = function(col) {
     var ans;
     if (col.length === 1) {
-      ans = col.charAt(0) - 'A' + 1;
+      ans = col.charCodeAt(0) - 'A'.charCodeAt(0) + 1;
+    } else {
+      ans = (col.charCodeAt(1) - 'A'.charCodeAt(0) + 1) * 26 + (col.charCodeAt(0) - 'A'.charCodeAt(0) + 1);
     }
-    ans = (col.charAt(1) - 'A' + 1) * 26 + (col.charAt(0) - 'A' + 1);
-    console.log("col2num -> " + ans);
     return ans;
   };
 
@@ -32,7 +32,7 @@
     var c, r;
     c = ref.replace(/[0-9]/g, '');
     r = ref.replace(/[A-Z]/g, '');
-    return [col2num(c), parseInt(r)];
+    return [col2num(c), parseInt(r, 10)];
   };
 
   START_DAY = new Date("1900-01-01");
@@ -61,6 +61,7 @@
     worksheets = [];
     zipTime = Date.now();
     zip = zip.load(file, {
+      checkCRC32: true,
       base64: true
     });
     result = {
@@ -71,13 +72,13 @@
     processTime = Date.now();
     sharedStrings = [];
     if (zip.files["xl/sharedStrings.xml"]) {
-      s = zip.files["xl/sharedStrings.xml"].data.split("<t>");
+      s = zip.file("xl/sharedStrings.xml").asText().split("<t>");
       i = s.length;
       while (--i) {
         sharedStrings[i - 1] = s[i].substring(0, s[i].indexOf("<"));
       }
     }
-    s = zip.files["docProps/core.xml"].data;
+    s = zip.file("docProps/core.xml").asText();
     s = s.substr(s.indexOf("<dc:creator>") + 12);
     result.creator = s.substring(0, s.indexOf("</dc:creator>"));
     s = s.substr(s.indexOf("<cp:lastModifiedBy>") + 19);
@@ -86,7 +87,7 @@
     result.created = new Date(s.substring(0, s.indexOf("</dcterms:created>")));
     s = s.substr(s.indexOf("<dcterms:modified xsi:type=\"dcterms:W3CDTF\">") + 44);
     result.modified = new Date(s.substring(0, s.indexOf("</dcterms:modified>")));
-    s = zip.files["xl/workbook.xml"].data;
+    s = zip.file("xl/workbook.xml").asText();
     index = s.indexOf("activeTab=\"");
     if (index > 0) {
       s = s.substr(index + 11);
@@ -104,7 +105,7 @@
       });
     }
     styles = [];
-    s = zip.files["xl/styles.xml"].data.split("<numFmt ");
+    s = zip.file("xl/styles.xml").asText().split("<numFmt ");
     i = s.length;
     while (--i) {
       t = s[i];
@@ -135,10 +136,10 @@
     }
     i = result.worksheets.length;
     while (i--) {
-      s = zip.files["xl/worksheets/sheet" + (i + 1) + ".xml"].data.split("<row ");
+      s = zip.file("xl/worksheets/sheet" + (i + 1) + ".xml").asText().split("<row ");
       w = result.worksheets[i];
       w.table = s[0].indexOf("<tableParts ") > 0;
-      merges = zip.files["xl/worksheets/sheet" + (i + 1) + ".xml"].data.split("mergeCells");
+      merges = zip.file("xl/worksheets/sheet" + (i + 1) + ".xml").asText().split("mergeCells");
       if (merges.length > 1) {
         w.mergeCells = [];
         m = merges[1].split('"');

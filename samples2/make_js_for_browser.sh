@@ -1,6 +1,6 @@
 #! /bin/sh
 
-# npm install-g  browserbuild
+# npm install -g browserbuild
 
 rm -fr js
 mkdir js

@@ -23,8 +23,9 @@
     if (col.length === 1) {
       ans = col.charCodeAt(0) - 'A'.charCodeAt(0) + 1;
     } else {
-      ans = (col.charCodeAt(1) - 'A'.charCodeAt(0) + 1) * 26 + (col.charCodeAt(0) - 'A'.charCodeAt(0) + 1);
+      ans = (col.charCodeAt(1) - 'A'.charCodeAt(0) + 1) * 26 + (col.charCodeAt(0) - 'A'.charAreaCount() + 1);
     }
+    console.log("col2num -> " + ans);
     return ans;
   };
 

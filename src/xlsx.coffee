@@ -23,8 +23,8 @@ col2num = (col) ->
   if (col.length == 1)
     ans = (col.charCodeAt(0) - 'A'.charCodeAt(0) + 1)
   else
-    ans = ((col.charCodeAt(1) - 'A'.charCodeAt(0) + 1)) * 26 + (col.charCodeAt(0) - 'A'.charAreaCount() + 1)
-  console.log "col2num -> #{ans}"
+    ans = ((col.charCodeAt(1) - 'A'.charCodeAt(0) + 1)) * 26 + (col.charCodeAt(0) - 'A'.charCodeAt(0) + 1)
+  # console.log "col2num -> #{ans}"
   ans
 
 # "A2" --> [1,2]
@@ -35,7 +35,7 @@ ref2cr = (ref) ->
 
 START_DAY = new Date("1900-01-01");
 
-# 0 <--> Date(1900-01-01), 1 <--> Datde(1900-01-020 ...
+# 0 <--> Date(1900-01-01), 1 <--> Datde(1900-01-02) ...
 convertDate = (input) ->
   if typeof input is "object"
     ((input - START_DAY) / 86400000)
