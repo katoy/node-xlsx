@@ -79,7 +79,9 @@ describe 'Write XLSX ', ->
     book.worksheets[0].data[1][0].should.be.eql { value: -10, formatCode: 'General' }
     book.worksheets[0].data[1][1].should.be.eql { value: "あいう", formatCode: 'General' }
     book.worksheets[0].data[2][0].should.be.eql { value: 1.234, formatCode: 'General' }
-    book.worksheets[0].data[2][1].should.be.eql { value: 41192, formatCode: 'mm-dd-yy' }
+
+    xlsx.convertDate(book.worksheets[0].data[2][1].value).should.be.eql 41192
+    book.worksheets[0].data[2][1].formatCode.should.be.eql 'mm-dd-yy'
 
     book.worksheets[1].data[0][0].should.be.eql { value: 9999, formatCode: 'General' }
     book.worksheets[1].data[0][1].should.be.eql { value: "AAAAA", formatCode: 'General' }
@@ -93,8 +95,9 @@ describe 'Write XLSX ', ->
     book.data[0][1][1].should.be.eql { value: "あいう", formatCode: 'General' }
 
     book.data[0][2][0].should.be.eql { value: 1.234, formatCode: 'General' }
-    book.data[0][2][1].should.be.eql { value: 41192, formatCode: 'mm-dd-yy' }
-    xlsx.convertDate(book.data[0][2][1].value).should.be.eql new Date("2012-10-12")
+
+    book.data[0][2][1].value.should.be.eql new Date("2012-10-12")
+    book.data[0][2][1].formatCode.should.be.eql 'mm-dd-yy'
 
     book.data[1][0][0].should.be.eql { value: 9999, formatCode: 'General' }
     book.data[1][0][1].should.be.eql { value: "AAAAA", formatCode: 'General' }

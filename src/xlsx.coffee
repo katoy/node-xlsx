@@ -9,6 +9,8 @@ typeOf = (obj) ->
   ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
 
 getAttr = (s, n) ->
+  s = " " + s
+  n = " " + n
   s = s.substr(s.indexOf(n + "=\"") + n.length + 2)
   s.substring 0, s.indexOf("\"")
 
