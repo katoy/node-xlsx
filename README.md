@@ -11,6 +11,9 @@ Settings:
 ------------
 
     $ npm install
+    $ git config diff.xlsx.textconv strings
+
+See [http://www.kernel.org/pub/software/scm/git/docs/gitattributes.html](http://www.kernel.org/pub/software/scm/git/docs/gitattributes.html) for diff on github.  
 
 Checking
 ----------
