@@ -22,10 +22,11 @@ alphabet = (i) ->
 
 # "A" -> 1
 col2num = (col) ->
-  if (col.length == 1)
+  len = col.length
+  if (len == 1)
     ans = (col.charCodeAt(0) - 'A'.charCodeAt(0) + 1)
   else
-    ans = ((col.charCodeAt(1) - 'A'.charCodeAt(0) + 1)) * 26 + (col.charCodeAt(0) - 'A'.charCodeAt(0) + 1)
+    ans = col2num(col.substr(0, len - 1)) * 26 + col2num(col.substr(len - 1, 1))
   # console.log "col2num -> #{ans}"
   ans
 
@@ -36,7 +37,7 @@ ref2cr = (ref) ->
   [col2num(c), parseInt(r, 10)]
 
 # '&<> --> &quot;%anp;&lt;&gt;
-escape = (s) ->
+escapeXmlMarkup = (s) ->
   return s if !s
   s.replace(/&/g, '&amp;').
     replace(/</g, '&lt;').
@@ -45,7 +46,7 @@ escape = (s) ->
     replace(/\'/g, '&apos;')
 
 # '&<> <-- &quot;%anp;&lt;&gt;
-unescape = (s) ->
+unescapeXmlMarkup = (s) ->
   return s if !s
   s.replace(/&amp;/g, '&').
     replace(/&lt;/g, '<').
@@ -87,10 +88,11 @@ exports.decode = (file) -> # v2.0.0
 
   #{ Process sharedStrings
   sharedStrings = []
-  if zip.files["xl/sharedStrings.xml"]
-    s = zip.file("xl/sharedStrings.xml").asText().split("<t>")
+  s = zip.file('xl/sharedStrings.xml');
+  if s
+    s = s.asText().split(/<t.*?>/g)
     i = s.length
-    sharedStrings[i - 1] = unescape(s[i].substring(0, s[i].indexOf("<")))  while --i # Do not process i === 0, because s[0] is the text before first t element
+    sharedStrings[i - 1] = unescapeXmlMarkup(s[i].substring(0, s[i].indexOf("</t>")))  while --i # Do not process i === 0, because s[0] is the text before first t element
   #}
 
   #{ Get file info from "docProps/core.xml"
@@ -118,7 +120,7 @@ exports.decode = (file) -> # v2.0.0
   while --i # Do not process i === 0, because s[0] is the text before the first sheet element
     id = s[i].substr(s[i].indexOf("name=\"") + 6)
     result.worksheets.unshift
-      name: unescape id.substring(0, id.indexOf("\""))
+      name: unescapeXmlMarkup id.substring(0, id.indexOf("\""))
       data: []
   #}
 
@@ -218,6 +220,7 @@ exports.encode = (file) -> # v2.0.0
   #}
 
   #{ Content dependent
+  styles = new Array(1);
   w = file.worksheets.length
   while w-- # Generate worksheet (gather sharedStrings), and possibly table files, then generate entries for constant files below
     id = w + 1
@@ -238,10 +241,11 @@ exports.encode = (file) -> # v2.0.0
         val = (if cell.hasOwnProperty("value") then cell.value else cell)
         t = ""
         style = (if cell.formatCode isnt "General" then cell.formatCode else "")
-        if val and typeof val is "string" and isNaN(parseFloat(val)) # If value is string, and not string of just a number, place a sharedString reference instead of the value
+        if val and typeof val is "string" and !isFinite(val)  # If value is string, and not string of just a number, place a sharedString reference instead of the value
+          val = escapeXmlMarkup(val);
           sharedStrings[1]++ # Increment total count, unique count derived from sharedStrings[0].length
           index = sharedStrings[0].indexOf(val)
-          index = sharedStrings[0].push(escape(val)) - 1  if index < 0
+          index = sharedStrings[0].push(val) - 1  if index < 0
           val = index
           t = "s"
         else if typeof val is "boolean"
@@ -274,9 +278,9 @@ exports.encode = (file) -> # v2.0.0
       xlWorksheets.folder("_rels").file "sheet" + id + ".xml.rels", "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\"><Relationship Id=\"rId1\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/table\" Target=\"../tables/table" + id + ".xml\"/></Relationships>"
       contentTypes[1].unshift "<Override PartName=\"/xl/tables/table" + id + ".xml\" ContentType=\"application/vnd.openxmlformats-officedocument.spreadsheetml.table+xml\"/>"
     contentTypes[0].unshift "<Override PartName=\"/xl/worksheets/sheet" + id + ".xml\" ContentType=\"application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml\"/>"
-    props.unshift worksheet.name or "Sheet" + id
+    props.unshift escapeXmlMarkup(worksheet.name) or "Sheet" + id
     xlRels.unshift "<Relationship Id=\"rId" + id + "\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet\" Target=\"worksheets/sheet" + id + ".xml\"/>"
-    worksheets.unshift "<sheet name=\"" + escape((worksheet.name or "Sheet" + id)) + "\" sheetId=\"" + id + "\" r:id=\"rId" + id + "\"/>"
+    worksheets.unshift "<sheet name=\"" + escapeXmlMarkup((worksheet.name or "Sheet" + id)) + "\" sheetId=\"" + id + "\" r:id=\"rId" + id + "\"/>"
 
   #{ xl/styles.xml
   i = styles.length
