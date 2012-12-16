@@ -19,7 +19,10 @@
 	"mkdirp": "*",
 	"rimraf":"*",
 	"which": "*",
-	"jscoverage": "*"
+	"jscoverage": "=0.2.5",
+	"qunit": "*",
+	"qunitjs": "*",
+	"qunit-tap": "*"
     },
     "engines": {
 	"node": ">=0.8.11"

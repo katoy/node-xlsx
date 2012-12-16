@@ -65,6 +65,9 @@ task 'clean:all', 'clean pervious built js files and documents', (options) -> cl
 task 'clean:js', 'clean pervious built js files', (options) -> clean 'js', options.force
 task 'clean:doc', 'clean pervious built documents', (options) -> clean 'doc', options.force
 task 'test', 'do test', (options) -> test(options)
+task 'test2_node', 'do test2_node', (options) -> test2_node(options)
+task 'test2_node_tap', 'do test2_node_tap', (options) -> test2_node_tap(options)
+task 'test2_phantomjs', 'do test2_phantomjs', (options) -> test2_phantomjs(options)
 task 'coverage', 'do coverage', (options) -> coverage(options)
 
 # Task Functions
@@ -150,6 +153,42 @@ test = (options) ->
   mocha.stdout.on 'data', (data) -> puts data
   mocha.stderr.on 'data', (data) -> error data
   mocha.on 'close', -> success 'finished'
+
+test2_node = (otpions) ->
+  try
+    nodePath = which 'node'
+  catch e
+    error 'cannot find executable `mocha`'
+    error 'check which coffee'
+    return
+  node = spawn nodePath, ["test2/node-index.js"]
+  node.stdout.on 'data', (data) -> puts data
+  node.stderr.on 'data', (data) -> error data
+  node.on 'close', -> success 'finished'
+
+test2_node_tap = (otpions) ->
+  try
+    nodePath = which 'node'
+  catch e
+    error 'cannot find executable `mocha`'
+    error 'check which coffee'
+    return
+  node = spawn nodePath, ["test2/node-tap-index.js"]
+  node.stdout.on 'data', (data) -> puts data
+  node.stderr.on 'data', (data) -> error data
+  node.on 'close', -> success 'finished'
+
+test2_phantomjs = (otpions) ->
+  try
+    phantomjsPath = which 'node'
+  catch e
+    error 'cannot find executable `mocha`'
+    error 'check which coffee'
+    return
+  ph = spawn phantomjsPath, ["test2/phantomjs-index.js"]
+  ph.stdout.on 'data', (data) -> puts data
+  ph.stderr.on 'data', (data) -> error data
+  ph.on 'close', -> success 'finished'
 
 coverage = (options) ->
   puts "Do following."

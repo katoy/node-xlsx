@@ -33,6 +33,8 @@ Cake:
     cake clean:js             # clean pervious built js files  
     cake clean:doc            # clean pervious built documents  
     cake test                 # do test  
+    cake test2_node           # do test2_node
+    cake test2_node_tap       # do test2_node_tap
     cake coverage             # do coverage  
       
     -w, --watch        continually build  
