@@ -77,8 +77,8 @@ test('GET save.xlsx', function(){
     
     var url = "testdata/save.xlsx";
     getServerFileToArrayBufffer(url, function(arrayBuffer) {
-        //var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(arrayBuffer)));
-        alert(base64String);
+        var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(arrayBuffer)));
+        //alert(base64String);
         show_xlsx(url, base64String);
         
         ok( base64String,

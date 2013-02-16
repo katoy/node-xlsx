@@ -70,6 +70,7 @@
                     }
                 ],
                 [
+                    null,
                     {
                         "value": null,
                         "formatCode": "DD\\-MM\\-YY"
@@ -122,7 +123,9 @@
                     }
                 ]
             ],
-            "table": false
+            "table": false,
+            "maxCol": 3,
+            "maxRow": 13
         },
         {
             "name": "Sheet2",
@@ -134,7 +137,9 @@
                     }
                 ]
             ],
-            "table": false
+            "table": false,
+            "maxCol": 2,
+            "maxRow": 1
         },
         {
             "name": "Sheet3",
@@ -146,7 +151,9 @@
                     }
                 ]
             ],
-            "table": false
+            "table": false,
+            "maxCol": 2,
+            "maxRow": 1
         }
     ],
     "data": [
@@ -218,6 +225,7 @@
                 }
             ],
             [
+                null,
                 {
                     "value": null,
                     "formatCode": "DD\\-MM\\-YY"

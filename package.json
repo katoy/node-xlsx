@@ -8,26 +8,27 @@
     },
     "author": "Kato Youichi <youichikato@gmail.com>",
     "dependencies": {
-	"coffee-script" :"*",
-	"node-zip": "*",
+	"coffee-script" :">=1.4.0",
+	"node-zip": ">=0.0.2",
 	"dateformat": "*"
     },
     "devDependencies": {
-	"mocha": "*",
-	"chai": "*",
-	"docco": "*",
-	"mkdirp": "*",
-	"rimraf":"*",
-	"which": "*",
-	"jscoverage": "=0.2.5",
-	"qunit": "*",
-	"qunitjs": "*",
-	"qunit-tap": "*"
+	"mocha": ">=1.7.4",
+	"chai": ">=1.4.0",
+	"docco": ">=0.4.0",
+	"mkdirp": ">=0.3.4",
+	"rimraf":">=2.0.3",
+	"which": ">=1.0.4",
+	"jscoverage": ">=0.2.5",
+	"qunit": ">=0.5.14",
+	"qunitjs": ">=1.10.0",
+	"qunit-tap": ">=1.2.2"
     },
     "engines": {
-	"node": ">=0.8.11"
+	"node": ">=0.8.19"
     },
     "scripts": {
-	"test": "mocha"
+	"test": "mocha",
+        "preinstall": "npm install -g mocha phantomjs jscoverage"
     }
 }

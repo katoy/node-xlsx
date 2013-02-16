@@ -1,6 +1,6 @@
 
 Read/Write xlsx file.
-This is base on https://github.com/stephen-hardy/xlsx.js
+This is based on https://github.com/stephen-hardy/xlsx.js
 
 samples/sample-read.coffee and sample-save.coffee are sample scripts.
 
@@ -54,7 +54,7 @@ On index1.html, Edit the table, press [save], it will generate xlsx file,
 On index2.html, Select or Drop xlsx file(s), it show the content on the web page.  
 (no nees server, it works on server-side)  
 
-Sample run ib CLI:
+Sample run in CLI:
 ------------------
 
     $ cd samples
@@ -366,7 +366,7 @@ This script reads testdata/Formating.js and show parsed results in json format.
 
     $ node sampel-save.js
 
-This script makes simple excel wrbook and saves to testdata/save.xlsx.
+This script makes simple excel workbook and saves to testdata/save.xlsx.
 
 You can open save.xlsx using Open-Office or NeoOffice. 
 (I am working on Mac, and I have no MS-Excel.)
@@ -374,9 +374,71 @@ You can open save.xlsx using Open-Office or NeoOffice.
 testdata/Formatting.js is https://github.com/apache/poi/blob/trunk/test-data/spreadsheet/Formatting.xlsx .
 
 CakeFile and package.js are based at https://github.com/whitetrefoil/Xlsx2Json_node .
- 
+
+
+Running Test
+============
+
+    $ cake test
+	
+	1..6
+	ok 1 The library file should exist
+	ok 2 The functions should be accessible: decode
+	ok 3 The functions should be accessible: encode
+	ok 4 When convert to memory, the json object should be converted successfully
+	ok 5 When convert to memory, the json object should be same as what loads from JSON file
+	ok 6 Write XLSX  should same as in testref/save.xlsx
+	# tests 6
+	# pass 6
+	# fail 0
+	OK: finished
+	
+	
+	$ cake test2_node
+	
+	Testing /Users/youichikato/github/node-xlsx/test2/js/browser_xlsx.js ...
+	done
+	Assertions:
+	┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓
+	┃ Module                                 ┃ Test                                   ┃ Assertion                              ┃ Result ┃
+	┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━┫
+	┃ browser_xlsx                           ┃ GET save.xlsx                          ┃ GET Request to Google.com succeeded!   ┃ ok     ┃
+	┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━┫
+	┃                                        ┃ GET Firmatting.xlsx                    ┃ GET Request to Google.com succeeded!   ┃ ok     ┃
+	┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━┛
+	Tests:
+	┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┓
+	┃ Module                                 ┃ Test                                   ┃ Failed ┃ Passed ┃ Total  ┃
+	┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━┫
+	┃ browser_xlsx                           ┃ GET save.xlsx                          ┃ 0      ┃ 1      ┃ 1      ┃
+	┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━╋━━━━━━━━╋━━━━━━━━┫
+	┃                                        ┃ GET Firmatting.xlsx                    ┃ 0      ┃ 1      ┃ 1      ┃
+	┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━┻━━━━━━━━┻━━━━━━━━┛
+	Summary:
+	┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┓
+	┃ File                                               ┃ Failed   ┃ Passed   ┃ Total    ┃ Runtime  ┃
+	┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━╋━━━━━━━━━━╋━━━━━━━━━━╋━━━━━━━━━━┫
+	┃ ...ikato/github/node-xlsx/test2/js/browser_xlsx.js ┃ 0        ┃ 2        ┃ 2        ┃ 96       ┃
+	┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━━┛
+	Global summary:
+	┏━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┓
+	┃ Files      ┃ Tests      ┃ Assertions ┃ Failed     ┃ Passed     ┃ Runtime    ┃
+	┣━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━╋━━━━━━━━━━━━┫
+	┃ 1          ┃ 2          ┃ 2          ┃ 0          ┃ 2          ┃ 96         ┃
+	┗━━━━━━━━━━━━┻━━━━━━━━━━━━┻━━━━━━━━━━━━┻━━━━━━━━━━━━┻━━━━━━━━━━━━┻━━━━━━━━━━━━┛
+	OK: finished
+	
+	
+	$ cake test2_node_tap
+	# test: GET save.xlsx
+	ok 1 - GET Request to Google.com succeeded!
+	# test: GET Firmatting.xlsx
+	ok 2 - GET Request to Google.com succeeded!
+	1..2
+	OK: finished
+	
 History
 -------
 
-2010-10-27  Follow xlsx.js 2.0.0
-
+2013-02-16  Follow xlsx.js 2.2.0  
+2012-10-27  Follow xlsx.js 2.0.0  

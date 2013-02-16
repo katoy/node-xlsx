@@ -4,7 +4,7 @@
 # https://raw.github.com/stephen-hardy/xlsx.js/master/LICENSE.txt
 #----------------------------------------------------------
 
-# v2.0.0
+# v2.2.0
 typeOf = (obj) ->
   ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
 
@@ -14,13 +14,13 @@ getAttr = (s, n) ->
   s = s.substr(s.indexOf(n + "=\"") + n.length + 2)
   s.substring 0, s.indexOf("\"")
 
-# 1 -> "A", 2 -> "B", ... 26 -> "Z", 27 -> "AA!, 28 -> "AB", ...
-alphabet = (i) ->
+# 0 -> "A", 1 -> "B", ... 25 -> "Z", 26 -> "AA", 28 -> "AB", ...
+num2alph = (i) ->
   s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   t = Math.floor(i / 26) - 1
-  ((if t > -1 then alphabet(t) else "")) + s.charAt(i % 26)
+  ((if t > -1 then num2alph(t) else "")) + s.charAt(i % 26)
 
-# "A" -> 1
+# "A" -> 1, ... "Z" -> 26, "AA" -> 27  
 col2num = (col) ->
   len = col.length
   if (len == 1)
@@ -37,7 +37,7 @@ ref2cr = (ref) ->
   [col2num(c), parseInt(r, 10)]
 
 # '&<> --> &quot;%anp;&lt;&gt;
-escapeXmlMarkup = (s) ->
+escapeXML = (s) ->
   return s if !s
   s.replace(/&/g, '&amp;').
     replace(/</g, '&lt;').
@@ -46,7 +46,7 @@ escapeXmlMarkup = (s) ->
     replace(/\'/g, '&apos;')
 
 # '&<> <-- &quot;%anp;&lt;&gt;
-unescapeXmlMarkup = (s) ->
+unescapeXML = (s) ->
   return s if !s
   s.replace(/&amp;/g, '&').
     replace(/&lt;/g, '<').
@@ -69,7 +69,7 @@ exports.convertDate = convertDate
 
 numFmts = ["General", "0", "0.00", "#,##0", "#,##0.00", null, null, null, null, "0%", "0.00%", "0.00E+00", "# ?/?", "# ??/??", "mm-dd-yy", "d-mmm-yy", "d-mmm", "mmm-yy", "h:mm AM/PM", "h:mm:ss AM/PM", "h:mm", "h:mm:ss", "m/d/yy h:mm", null, null, null, null, null, null, null, null, null, null, null, null, null, null, "#,##0 ;(#,##0)", "#,##0 ;[Red](#,##0)", "#,##0.00;(#,##0.00)", "#,##0.00;[Red](#,##0.00)", null, null, null, null, "mm:ss", "[h]:mm:ss", "mmss.0", "##0.0E+0", "@"]
 
-exports.decode = (file) -> # v2.0.0
+exports.decode = (file) -> # v2.2.0
   zip = new JSZip()
   contentTypes = [[], []]
   props = []
@@ -92,7 +92,7 @@ exports.decode = (file) -> # v2.0.0
   if s
     s = s.asText().split(/<t.*?>/g)
     i = s.length
-    sharedStrings[i - 1] = unescapeXmlMarkup(s[i].substring(0, s[i].indexOf("</t>")))  while --i # Do not process i === 0, because s[0] is the text before first t element
+    sharedStrings[i - 1] = unescapeXML(s[i].substring(0, s[i].indexOf("</t>")))  while --i # Do not process i === 0, because s[0] is the text before first t element
   #}
 
   #{ Get file info from "docProps/core.xml"
@@ -120,7 +120,7 @@ exports.decode = (file) -> # v2.0.0
   while --i # Do not process i === 0, because s[0] is the text before the first sheet element
     id = s[i].substr(s[i].indexOf("name=\"") + 6)
     result.worksheets.unshift
-      name: unescapeXmlMarkup id.substring(0, id.indexOf("\""))
+      name: unescapeXML id.substring(0, id.indexOf("\""))
       data: []
   #}
 
@@ -164,10 +164,15 @@ exports.decode = (file) -> # v2.0.0
       m = merges[1].split('"')
       w.mergeCells.unshift( ref2cr(m[k]) ) for k in [3 ... (m.length - 1)] by 2
 
+    t = getAttr(s[0].substr(s[0].indexOf('<dimension')), 'ref')
+    t = t.substr(t.indexOf(':') + 1)
+    w.maxCol = col2num(t.match(/[a-zA-Z]*/g)[0]) + 1
+    w.maxRow = +t.match(/\d*/g).join('')
+          
     w = w.data
     j = s.length
     while --j # Don't process j === 0, because s[0] is the text before the first row element
-      w.unshift []
+      row = w[+getAttr(s[j], 'r') - 1] = []
       columns = s[j].split("<c ")
       k = columns.length
       while --k # Don't process l === 0, because k[0] is the text before the first c (cell) element
@@ -177,17 +182,17 @@ exports.decode = (file) -> # v2.0.0
           formatCode: "General"
 
         t = getAttr(cell, "t") or f.type
-        cell = cell.substring(cell.indexOf("<v>") + 3, cell.indexOf("</v>"))
-        cell = (if cell then +cell else "") # turn non-zero into number
+        val = cell.substring(cell.indexOf("<v>") + 3, cell.indexOf("</v>"))
+        val = (if val then +val else "") # turn non-zero into number
         switch t
           when "s"
-            cell = sharedStrings[cell]
+            val = sharedStrings[val]
           when "b"
-            cell = cell is 1
+            val = val is 1
           when "date"
-            cell = convertDate(cell)
-        w[0].unshift
-          value: cell
+            val = convertDate(val)
+        row[col2num(getAttr(cell, 'r').match(/[a-zA-Z]*/g)[0]) - 1] =
+          value: val
           formatCode: f.formatCode
   #}
   for s in result.worksheets
@@ -229,20 +234,21 @@ exports.encode = (file) -> # v2.0.0
     worksheet = file.worksheets[w]
     data = worksheet.data
     styles = [null, null]
-    s = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><worksheet xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" mc:Ignorable=\"x14ac\" xmlns:x14ac=\"http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac\">" + "<dimension ref=\"A1:" + alphabet(data[0].length - 1) + data.length + "\"/><sheetViews><sheetView " + ((if w is file.activeWorksheet then "tabSelected=\"1\" " else "")) + " workbookViewId=\"0\"/></sheetViews><sheetFormatPr defaultRowHeight=\"15\" x14ac:dyDescent=\"0.25\"/><sheetData>"
+    s = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><worksheet xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" mc:Ignorable=\"x14ac\" xmlns:x14ac=\"http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac\">" + "<dimension ref=\"A1:" + num2alph(data[0].length - 1) + data.length + "\"/><sheetViews><sheetView " + ((if w is file.activeWorksheet then "tabSelected=\"1\" " else "")) + " workbookViewId=\"0\"/></sheetViews><sheetFormatPr defaultRowHeight=\"15\" x14ac:dyDescent=\"0.25\"/><sheetData>"
     i = -1
     l = data.length
     while ++i < l
       j = -1
       k = data[i].length
-      s += "<row r=\"" + (i + 1) + "\" spans=\"1:" + k + "\" x14ac:dyDescent=\"0.25\">"
+      #s += "<row r=\"" + (i + 1) + "\" spans=\"1:" + k + "\" x14ac:dyDescent=\"0.25\">"
+      s += "<row r=\"" + (i + 1) + "\" x14ac:dyDescent=\"0.25\">"
       while ++j < k
         cell = data[i][j]
         val = (if cell.hasOwnProperty("value") then cell.value else cell)
         t = ""
         style = (if cell.formatCode isnt "General" then cell.formatCode else "")
         if val and typeof val is "string" and !isFinite(val)  # If value is string, and not string of just a number, place a sharedString reference instead of the value
-          val = escapeXmlMarkup(val);
+          val = escapeXML(val);
           sharedStrings[1]++ # Increment total count, unique count derived from sharedStrings[0].length
           index = sharedStrings[0].indexOf(val)
           index = sharedStrings[0].push(val) - 1  if index < 0
@@ -260,7 +266,9 @@ exports.encode = (file) -> # v2.0.0
             style = styles.push(style) - 1
           else
             style = index
-        s += "<c r=\"" + alphabet(j) + (i + 1) + "\"" + ((if style then " s=\"" + style + "\"" else "")) + ((if t then " t=\"" + t + "\"" else "")) + "><v>" + val + "</v></c>"
+        s += "<c r=\"" + num2alph(j) + (i + 1) + "\"" + ((if style then " s=\"" + style + "\"" else "")) + ((if t then " t=\"" + t + "\"" else "")) + ">"
+        s += "<f>#{cell.formula}</f>" if (cell.formula)
+        s += "<v>#{val}</v></c>"
       s += "</row>"
     s += "</sheetData><pageMargins left=\"0.7\" right=\"0.7\" top=\"0.75\" bottom=\"0.75\" header=\"0.3\" footer=\"0.3\"/>"
     s += "<tableParts count=\"1\"><tablePart r:id=\"rId1\"/></tableParts>"  if worksheet.table
@@ -270,7 +278,7 @@ exports.encode = (file) -> # v2.0.0
     if worksheet.table
       i = -1
       l = data[0].length
-      t = alphabet(data[0].length - 1) + data.length
+      t = num2alph(data[0].length - 1) + data.length
       s = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><table xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" id=\"" + id + "\" name=\"Table" + id + "\" displayName=\"Table" + id + "\" ref=\"A1:" + t + "\" totalsRowShown=\"0\"><autoFilter ref=\"A1:" + t + "\"/><tableColumns count=\"" + data[0].length + "\">"
       s += "<tableColumn id=\"" + (i + 1) + "\" name=\"" + data[0][i] + "\"/>"  while ++i < l
       s += "</tableColumns><tableStyleInfo name=\"TableStyleMedium2\" showFirstColumn=\"0\" showLastColumn=\"0\" showRowStripes=\"1\" showColumnStripes=\"0\"/></table>"
@@ -278,9 +286,9 @@ exports.encode = (file) -> # v2.0.0
       xlWorksheets.folder("_rels").file "sheet" + id + ".xml.rels", "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\"><Relationship Id=\"rId1\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/table\" Target=\"../tables/table" + id + ".xml\"/></Relationships>"
       contentTypes[1].unshift "<Override PartName=\"/xl/tables/table" + id + ".xml\" ContentType=\"application/vnd.openxmlformats-officedocument.spreadsheetml.table+xml\"/>"
     contentTypes[0].unshift "<Override PartName=\"/xl/worksheets/sheet" + id + ".xml\" ContentType=\"application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml\"/>"
-    props.unshift escapeXmlMarkup(worksheet.name) or "Sheet" + id
+    props.unshift escapeXML(worksheet.name) or "Sheet" + id
     xlRels.unshift "<Relationship Id=\"rId" + id + "\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet\" Target=\"worksheets/sheet" + id + ".xml\"/>"
-    worksheets.unshift "<sheet name=\"" + escapeXmlMarkup((worksheet.name or "Sheet" + id)) + "\" sheetId=\"" + id + "\" r:id=\"rId" + id + "\"/>"
+    worksheets.unshift "<sheet name=\"" + escapeXML((worksheet.name or "Sheet" + id)) + "\" sheetId=\"" + id + "\" r:id=\"rId" + id + "\"/>"
 
   #{ xl/styles.xml
   i = styles.length
