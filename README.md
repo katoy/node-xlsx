@@ -24,22 +24,23 @@ Cake:
 ------------
 
     $ cake
-    Cakefile defines the following tasks:  
-      
-    cake build                # build coffee scripts into js  
-    cake lint                 # lint coffee scripts  
-    cake doc                  # generate documents  
-    cake clean:all            # clean pervious built js files and documents  
-    cake clean:js             # clean pervious built js files  
-    cake clean:doc            # clean pervious built documents  
-    cake test                 # do test  
-    cake test2_node           # do test2_node
-    cake test2_node_tap       # do test2_node_tap
-    cake coverage             # do coverage  
-      
-    -w, --watch        continually build  
-    -f, --force        clean all files in output folder whatever they're compilation outputs or anything else  
-    -r, --rebuild      do relative cleaning tasks before build js or generate documents  
+	Cakefile defines the following tasks:
+	
+	cake build                # build coffee scripts into js
+	cake lint                 # lint coffee scripts
+	cake doc                  # generate documents
+	cake clean:all            # clean pervious built js files and documents
+	cake clean:js             # clean pervious built js files
+	cake clean:doc            # clean pervious built documents
+	cake test                 # do test
+	cake test2_node           # do test2_node
+	cake test2_node_tap       # do test2_node_tap
+	cake test2_phantomjs      # do test2_phantomjs
+	cake coverage             # do coverage
+	
+	  -w, --watch        continually build
+ 	 -f, --force        clean all files in output folder whatever they're compilation outputs or anything else
+ 	 -r, --rebuild      do relative cleaning tasks before build js or generate documents
 
 
 Sample run in Browser:
@@ -62,11 +63,9 @@ Sample run in CLI:
 
     
 This script reads testdata/Formating.js and show parsed results in json format.
-
-    $ coffee sample-read.coffee 
     
-    ntsitm293174:samples youichikato$ coffee sample-read.coffee 
-    {
+    $ coffee sample-read.coffee 
+        {
         "worksheets": [
             {
                 "name": "Sheet1",
@@ -138,6 +137,7 @@ This script reads testdata/Formating.js and show parsed results in json format.
                         }
                     ],
                     [
+                        null,
                         {
                             "value": null,
                             "formatCode": "DD\\-MM\\-YY"
@@ -181,16 +181,18 @@ This script reads testdata/Formating.js and show parsed results in json format.
                     ],
                     [
                         {
-                            "value": "Â£nn.nn",
+                            "value": "£nn.nn",
                             "formatCode": "GENERAL"
                         },
                         {
                             "value": 10.52,
-                            "formatCode": "\\Â£#,##0.00"
+                            "formatCode": "\\£#,##0.00"
                         }
                     ]
                 ],
-                "table": false
+                "table": false,
+                "maxCol": 3,
+                "maxRow": 13
             },
             {
                 "name": "Sheet2",
@@ -202,7 +204,9 @@ This script reads testdata/Formating.js and show parsed results in json format.
                         }
                     ]
                 ],
-                "table": false
+                "table": false,
+                "maxCol": 2,
+                "maxRow": 1
             },
             {
                 "name": "Sheet3",
@@ -214,7 +218,9 @@ This script reads testdata/Formating.js and show parsed results in json format.
                         }
                     ]
                 ],
-                "table": false
+                "table": false,
+                "maxCol": 2,
+                "maxRow": 1
             }
         ],
         "data": [
@@ -232,7 +238,7 @@ This script reads testdata/Formating.js and show parsed results in json format.
                     },
                     {
                         "value": 39045,
-                        "formatCode": "YYYY/MM/DD"
+                    "formatCode": "YYYY/MM/DD"
                     }
                 ],
                 [
@@ -270,11 +276,11 @@ This script reads testdata/Formating.js and show parsed results in json format.
                         "value": "dd/mm/yy",
                         "formatCode": "GENERAL"
                     },
-                {
-                    "value": 39045,
-                    "formatCode": "D/M/YY;@"
-                }
-            ],
+                    {
+                        "value": 39045,
+                        "formatCode": "D/M/YY;@"
+                    }
+                ],
                 [
                     {
                         "value": "dd-mm-yy",
@@ -286,6 +292,7 @@ This script reads testdata/Formating.js and show parsed results in json format.
                     }
                 ],
                 [
+                    null,
                     {
                         "value": null,
                         "formatCode": "DD\\-MM\\-YY"
@@ -329,12 +336,12 @@ This script reads testdata/Formating.js and show parsed results in json format.
                 ],
                 [
                     {
-                        "value": "Â£nn.nn",
+                        "value": "£nn.nn",
                         "formatCode": "GENERAL"
                     },
                     {
                         "value": 10.52,
-                        "formatCode": "\\Â£#,##0.00"
+                        "formatCode": "\\£#,##0.00"
                     }
                 ]
             ],
@@ -355,14 +362,15 @@ This script reads testdata/Formating.js and show parsed results in json format.
                 ]
             ]
         ],
-        "zipTime": 47,
+        "zipTime": 57,
         "creator": "",
         "lastModifiedBy": "",
         "created": null,
         "modified": null,
         "activeWorksheet": 0,
-        "processTime": 0
+        "processTime": 3
     }
+
 
     $ node sampel-save.js
 
@@ -441,4 +449,4 @@ History
 -------
 
 2013-02-16  Follow xlsx.js 2.2.0  
-2012-10-27  Follow xlsx.js 2.0.0  
+2012-10-27  Follow xlsx.js 2.0.0
