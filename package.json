@@ -28,7 +28,7 @@
 	"node": ">=0.8.19"
     },
     "scripts": {
-	"test": "mocha",
+	"test": "cake build; mocha",
         "preinstall": "npm install -g mocha phantomjs jscoverage"
     }
 }
