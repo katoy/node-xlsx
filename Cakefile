@@ -4,21 +4,39 @@
 
 # Requirements
 
-fs = require 'fs'
+fs = require 'fs-extra'
 path = require 'path'
 util = require 'util'
 {spawn, exec} = require 'child_process'
 
-try2require = (name) ->
-  try
-    lib = require name
-  catch e
-    error "module `#{name}` is required to do force clean."
-    error "use npm to install/link `#{name}`"
-    error 'Aborted!'
-    process.exit(1)
-  lib
+# Helper Functions
+puts = (data) ->
+  _output data, bright
 
+error = (data) ->
+  _output data, red, 'ERR'
+
+success = (data) ->
+  _output data, green, 'OK'
+
+fail = (data) ->
+  _output data, red, 'FAIL'
+
+pass = (data) ->
+  _output data, green, 'PASS'
+
+_output = (data, color, prefix) ->
+  data = data.toString().trim() unless typeof data is 'string'
+  util.print color
+  if prefix?
+    util.print "#{prefix}: "
+    util.print bright
+  util.puts data
+  util.print reset
+
+_cleanFiles = () ->
+
+# ------------------
 # Paths
 files = [
   'lib',
@@ -34,8 +52,7 @@ docOutput = 'docs'
 for f in files
   isExt = fs.exists f
   unless isExt
-    mkdirp = try2require 'mkdirp'
-    mkdirp f
+    fs.mkdirpSync f
 
 
 # ANSI Terminal Colors
@@ -115,12 +132,11 @@ doc = (options) ->
 
 clean = (target = 'all', isForce = false) ->
   if isForce
-    rimraf = try2require 'rimraf'
     if target is 'js' or 'all'
-      rimraf.sync jsOutput
+      fs.rimraf.sync jsOutput
       fs.mkdir jsOutput
     if target is 'doc' or 'all'
-      rimraf.sync docOutput
+      fs.rimraf.sync docOutput
       fs.mkdir docOutput
     success 'OK, now anything in output folder has gone...'
   else
@@ -198,29 +214,3 @@ coverage = (options) ->
   puts '  $ TEST_COV=1 mocha --reporter html-cov > coverage.html'
   puts ''
 
-# Helper Functions
-puts = (data) ->
-  _output data, bright
-
-error = (data) ->
-  _output data, red, 'ERR'
-
-success = (data) ->
-  _output data, green, 'OK'
-
-fail = (data) ->
-  _output data, red, 'FAIL'
-
-pass = (data) ->
-  _output data, green, 'PASS'
-
-_output = (data, color, prefix) ->
-  data = data.toString().trim() unless typeof data is 'string'
-  util.print color
-  if prefix?
-    util.print "#{prefix}: "
-    util.print bright
-  util.puts data
-  util.print reset
-
-_cleanFiles = () ->

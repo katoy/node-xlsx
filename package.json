@@ -1,32 +1,46 @@
 {
     "name": "node-xlsx",
-    "version": "0.0.1",
-    "description": "Read and weite xlsx.",
+    "version": "0.2.2",
+    "description": "Read and write xlsx.",
+    "author": "Stephen Hardy",
+    "contributors": [ 
+	{
+	    "name": "Youichi Kato",
+	    "email": "youichikato@gmail.com"
+	}
+    ],
+    "keywords": [
+	"xlsx",
+	"convert",
+	"translate",
+	"generate",
+	"serialize",
+	"marshal"
+    ],
     "repository": {
 	"type": "git",
 	"url": "https://github.com/katoy/node-xlsx.git"
     },
-    "author": "Kato Youichi <youichikato@gmail.com>",
     "dependencies": {
 	"coffee-script" :">=1.4.0",
 	"node-zip": ">=0.0.2",
 	"dateformat": "*"
     },
     "devDependencies": {
-	"mocha": ">=1.7.4",
-	"chai": ">=1.4.0",
+	"mocha": ">=1.8.1",
+	"chai": ">=1.5.0",
 	"docco": ">=0.4.0",
-	"mkdirp": ">=0.3.4",
-	"rimraf":">=2.0.3",
-	"which": ">=1.0.4",
-	"jscoverage": ">=0.2.5",
-	"qunit": ">=0.5.14",
-	"qunitjs": ">=1.10.0",
-	"qunit-tap": ">=1.2.2"
+        "fs-extra": ">=0.5.0",
+	"which": ">=1.0.5",
+	"jscoverage": ">=0.3.5",
+	"qunit": ">=0.5.15",
+	"qunitjs": ">=1.11.0",
+	"qunit-tap": ">=1.3.0"
     },
     "engines": {
-	"node": ">=0.8.19"
+	"node": ">=0.8.20"
     },
+    "license": "Microsoft Office Extensible File License",
     "scripts": {
 	"test": "cake build; mocha",
         "preinstall": "npm install -g mocha phantomjs jscoverage"
