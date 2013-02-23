@@ -24,8 +24,11 @@
 
   col2num = function(col) {
     var ans, len;
+    ans = 0;
     len = col.length;
-    if (len === 1) {
+    if (len === 0) {
+
+    } else if (len === 1) {
       ans = col.charCodeAt(0) - 'A'.charCodeAt(0) + 1;
     } else {
       ans = col2num(col.substr(0, len - 1)) * 26 + col2num(col.substr(len - 1, 1));
@@ -138,7 +141,7 @@
       id = getAttr(s[i], "numFmtId");
       f = numFmts[id];
       if (!f) {
-        f = "@";
+        f = "";
       }
       if (f.indexOf("m") > -1) {
         t = "date";

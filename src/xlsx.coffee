@@ -23,8 +23,10 @@ num2alph = (i) ->
 
 # "A" -> 1, ... "Z" -> 26, "AA" -> 27  
 col2num = (col) ->
+  ans = 0
   len = col.length
-  if (len == 1)
+  if (len == 0)  
+  else if (len == 1)
     ans = (col.charCodeAt(0) - 'A'.charCodeAt(0) + 1)
   else
     ans = col2num(col.substr(0, len - 1)) * 26 + col2num(col.substr(len - 1, 1))
@@ -138,7 +140,7 @@ exports.decode = (file) -> # v2.2.0
   while --i
     id = getAttr(s[i], "numFmtId")
     f = numFmts[id]
-    f = "@" unless f
+    f = "" unless f
     if f.indexOf("m") > -1
       t = "date"
     else if f.indexOf("0") > -1

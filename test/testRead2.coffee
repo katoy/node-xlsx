@@ -12,10 +12,13 @@ JSZip = require 'node-zip'
 
 #### Pre-define file paths
 
+#  exampe.xlsx
+#   see https://github.com/randym/axlsx  examples/example.rb
+
 libPath = if (process.env.TEST_COV) then 'lib-cov/xlsx' else  'lib/xlsx'
-inputPath  = 'test/testdata/Formatting.xlsx'
-outputPath = 'test/testdata/Formatting.json'
-referPath  = 'test/testref/Formatting.json'
+inputPath  = 'test/testdata/example.xlsx'
+outputPath = 'test/testdata/example.json'
+referPath  = 'test/testref/example.json'
 
 path = require 'path'
 libPath = path.join __dirname, '..', libPath
