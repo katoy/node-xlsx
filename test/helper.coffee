@@ -1,5 +1,5 @@
 dateFormat = require 'dateformat'
-fs = require 'fs'
+fs = require 'fs-extra'
 JSZip = require 'node-zip'
 
 exports.generateJsonFile = (callback) ->
@@ -8,7 +8,6 @@ exports.generateJsonFile = (callback) ->
   bin.on 'exit', -> callback?()
 
 exports.removeOutputJsonFile = (callback) ->
-  fs = require 'fs'
   fs.exists outputPath, (isExisted) ->
     if isExisted then fs.unlinkSync outputPath
     callback?()

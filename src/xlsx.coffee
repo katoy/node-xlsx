@@ -4,6 +4,7 @@
 # https://raw.github.com/stephen-hardy/xlsx.js/master/LICENSE.txt
 #----------------------------------------------------------
 
+'use strict'
 # v2.2.0
 typeOf = (obj) ->
   ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
@@ -166,7 +167,7 @@ exports.decode = (file) -> # v2.2.0
 
     t = getAttr(s[0].substr(s[0].indexOf('<dimension')), 'ref')
     t = t.substr(t.indexOf(':') + 1)
-    w.maxCol = col2num(t.match(/[a-zA-Z]*/g)[0]) + 1
+    w.maxCol = col2num(t.match(/[a-zA-Z]*/g)[0])
     w.maxRow = +t.match(/\d*/g).join('')
           
     w = w.data
@@ -201,7 +202,7 @@ exports.decode = (file) -> # v2.2.0
   result.processTime = Date.now() - processTime
   result
 
-exports.encode = (file) -> # v2.0.0
+exports.encode = (file) ->
   zip = new JSZip()
 
   contentTypes = [[], []]
