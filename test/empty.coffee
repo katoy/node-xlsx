@@ -21,7 +21,7 @@ xlsx = require libPath
 #### Test cases
 
 describe "unit tests", ->
-  file = path.join("test", "testout", "inflate-1.xlsx")
+  file = path.join("test", "testout", "empty.xlsx")
   before (done) ->
     fs.remove file, (err) ->
       return done(err)  if err
@@ -29,12 +29,12 @@ describe "unit tests", ->
 
   it "should simple xlsx be written (you can manually check #{file})", (done) ->
     workbook = xlsx.encode(
-      creator: "John Doe"
-      lastModifiedBy: "Meg White"
+      creator: "katoy"
+      lastModifiedBy: "加藤"
       worksheets: [
-        data: [["green", "white", "orange", "blue", "red"], ["1", "2", "3", "4", "5"]]
+        data: [[]]
         table: true
-        name: "Sheet 1"
+        name: "empty"
       ]
     )
     fs.writeFile file, workbook.base64, "base64", done
@@ -45,44 +45,14 @@ describe "unit tests", ->
       workbook = xlsx.decode(content)
       assert.isNotNull workbook
       assert.deepEqual workbook.worksheets, [
-        name: "Sheet 1"
-        data: [[
-          value: "green"
-          formatCode: "General"
-        ,
-          value: "white"
-          formatCode: "General"
-        ,
-          value: "orange"
-          formatCode: "General"
-        ,
-          value: "blue"
-          formatCode: "General"
-        ,
-          value: "red"
-          formatCode: "General"
-        ], [
-          value: 1
-          formatCode: "General"
-        ,
-          value: 2
-          formatCode: "General"
-        ,
-          value: 3
-          formatCode: "General"
-        ,
-          value: 4
-          formatCode: "General"
-        ,
-          value: 5
-          formatCode: "General"
-        ]]
+        name: "empty"
+        data: [[]]
         table: false
-        maxCol: 5
-        maxRow: 2
+        maxCol: 0
+        maxRow: 1
       ]
 
-      assert.deepEqual workbook.creator, "John Doe"
-      assert.deepEqual workbook.lastModifiedBy, "Meg White"
+      assert.deepEqual workbook.creator, "katoy"
+      assert.deepEqual workbook.lastModifiedBy, "加藤"
       assert.deepEqual workbook.activeWorksheet, 0
       done()

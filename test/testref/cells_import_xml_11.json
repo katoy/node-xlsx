@@ -1,0 +1,1635 @@
+{
+    "worksheets": [
+        {
+            "name": "Sheet1",
+            "data": [
+                [
+                    {
+                        "value": "CELL TEST DOCUMENT",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                null,
+                [
+                    {
+                        "value": "1 - SIMPLE CELLS",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                null,
+                [
+                    {
+                        "value": "1.1 - NUMBERS",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "Float",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Positive",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Negative",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "Is",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": 1.2345,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": -1.2345,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "Must",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "1,2345",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "-1,2345",
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "RK",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Pos. int",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Neg. int",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Pos. int/100",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Neg. int/100",
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "Is",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": 1,
+                        "formatCode": "General"
+                    },
+                    null,
+                    {
+                        "value": -1,
+                        "formatCode": "General"
+                    },
+                    null,
+                    {
+                        "value": 0.01,
+                        "formatCode": "General"
+                    },
+                    null,
+                    {
+                        "value": -0.01,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "Must",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "1",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "-1",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "0.01",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "-0.01",
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "RK",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Pos. double",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Neg. double",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Pos. dbl/100",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Neg. dbl/100",
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "Is",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": 1,
+                        "formatCode": "General"
+                    },
+                    null,
+                    {
+                        "value": -1,
+                        "formatCode": "General"
+                    },
+                    null,
+                    {
+                        "value": 0.01,
+                        "formatCode": "General"
+                    },
+                    null,
+                    {
+                        "value": -0.01,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "Must",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "1",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "-1",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "0.01",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "-0.01",
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "MULTRK",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Pos. int",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Neg. int",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Pos. int/100",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Neg. int/100",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Null",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "Is",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": 1,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": -1,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": 0.01,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": -0.01,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": 0,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "Must",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "1",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "-1",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "0.01",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "-0.01",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "0",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                null,
+                [
+                    {
+                        "value": "1.2 - STRINGS",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Simple",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Spaces",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Multiline",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Multiline with spaces",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "Shared",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Text",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "  Text  ",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Line 1\r\nLine 2",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "  Line 1  \r\n  Line 2  ",
+                        "formatCode": "General"
+                    }
+                ],
+                null,
+                [
+                    {
+                        "value": "1.3 - BOOLEAN VALUES",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "True",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "False",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": true,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": false,
+                        "formatCode": "General"
+                    }
+                ],
+                null,
+                [
+                    {
+                        "value": "1.4 - ERROR CODES",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "NULL",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "DIV/0",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "VALUE",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "REF",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "NAME",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "NUM",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "N/A",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                null,
+                [
+                    {
+                        "value": "1.5 - FORMULAS",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": "String",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Number",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Boolean",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Error",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": "Empty",
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ],
+                [
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": 2,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": true,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    },
+                    {
+                        "value": null,
+                        "formatCode": "General"
+                    }
+                ]
+            ],
+            "table": false,
+            "maxCol": 8,
+            "maxRow": 33
+        }
+    ],
+    "data": [
+        [
+            [
+                {
+                    "value": "CELL TEST DOCUMENT",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            null,
+            [
+                {
+                    "value": "1 - SIMPLE CELLS",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            null,
+            [
+                {
+                    "value": "1.1 - NUMBERS",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "Float",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Positive",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Negative",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "Is",
+                    "formatCode": "General"
+                },
+                {
+                    "value": 1.2345,
+                    "formatCode": "General"
+                },
+                {
+                    "value": -1.2345,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "Must",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "1,2345",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "-1,2345",
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "RK",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Pos. int",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Neg. int",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Pos. int/100",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Neg. int/100",
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "Is",
+                    "formatCode": "General"
+                },
+                {
+                    "value": 1,
+                    "formatCode": "General"
+                },
+                null,
+                {
+                    "value": -1,
+                    "formatCode": "General"
+                },
+                null,
+                {
+                    "value": 0.01,
+                    "formatCode": "General"
+                },
+                null,
+                {
+                    "value": -0.01,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "Must",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "1",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": "-1",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": "0.01",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": "-0.01",
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "RK",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Pos. double",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Neg. double",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Pos. dbl/100",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Neg. dbl/100",
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "Is",
+                    "formatCode": "General"
+                },
+                {
+                    "value": 1,
+                    "formatCode": "General"
+                },
+                null,
+                {
+                    "value": -1,
+                    "formatCode": "General"
+                },
+                null,
+                {
+                    "value": 0.01,
+                    "formatCode": "General"
+                },
+                null,
+                {
+                    "value": -0.01,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "Must",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "1",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": "-1",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": "0.01",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": "-0.01",
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "MULTRK",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Pos. int",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Neg. int",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Pos. int/100",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Neg. int/100",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Null",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "Is",
+                    "formatCode": "General"
+                },
+                {
+                    "value": 1,
+                    "formatCode": "General"
+                },
+                {
+                    "value": -1,
+                    "formatCode": "General"
+                },
+                {
+                    "value": 0.01,
+                    "formatCode": "General"
+                },
+                {
+                    "value": -0.01,
+                    "formatCode": "General"
+                },
+                {
+                    "value": 0,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "Must",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "1",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "-1",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "0.01",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "-0.01",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "0",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            null,
+            [
+                {
+                    "value": "1.2 - STRINGS",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Simple",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Spaces",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Multiline",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Multiline with spaces",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "Shared",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Text",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "  Text  ",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Line 1\r\nLine 2",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "  Line 1  \r\n  Line 2  ",
+                    "formatCode": "General"
+                }
+            ],
+            null,
+            [
+                {
+                    "value": "1.3 - BOOLEAN VALUES",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "True",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "False",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": true,
+                    "formatCode": "General"
+                },
+                {
+                    "value": false,
+                    "formatCode": "General"
+                }
+            ],
+            null,
+            [
+                {
+                    "value": "1.4 - ERROR CODES",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "NULL",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "DIV/0",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "VALUE",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "REF",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "NAME",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "NUM",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "N/A",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            null,
+            [
+                {
+                    "value": "1.5 - FORMULAS",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": "String",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Number",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Boolean",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Error",
+                    "formatCode": "General"
+                },
+                {
+                    "value": "Empty",
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ],
+            [
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": 2,
+                    "formatCode": "General"
+                },
+                {
+                    "value": true,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                },
+                {
+                    "value": null,
+                    "formatCode": "General"
+                }
+            ]
+        ]
+    ],
+    "zipTime": 64,
+    "creator": "dr104026",
+    "lastModifiedBy": "dr104026",
+    "created": "2007-04-03T14:58:20.000Z",
+    "modified": "2007-08-03T11:47:39.000Z",
+    "activeWorksheet": 0,
+    "processTime": 5
+}

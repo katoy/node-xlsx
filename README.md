@@ -2,7 +2,11 @@
 Read/Write xlsx file.
 This is based on https://github.com/stephen-hardy/xlsx.js
 
-samples/sample-read.coffee and sample-save.coffee are sample scripts.
+and for one test script on  https://github.com/feugy/xlsx.js 
+
+./samples/sample-read.coffee and sample-save.coffee are sample scripts.
+
+./sample2 is sample in web page.  
 
 tarvis : [![Build Status](https://secure.travis-ci.org/katoy/node-xlsx.png)](http://travis-ci.org/katoy/node-xlsx)  
 
