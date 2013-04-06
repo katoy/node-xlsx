@@ -10,10 +10,9 @@ data64 = fs.readFileSync(filename, "base64")
 workbook = xlsx.decode(data64)
 
 # console.log(JSON.stringify(workbook, null, 4));
-table = new Table()
 
 for i in [0 ... workbook.data.length]
-  sheet = []
+  table = new Table()
   for  j in [0 ...  workbook.data[i].length]
     row = []
     if workbook.data[i][j]
@@ -24,4 +23,5 @@ for i in [0 ... workbook.data.length]
 
     table.push row
 
+  console.log workbook.worksheets[i].name
   console.log table.toString()

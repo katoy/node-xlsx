@@ -63,26 +63,27 @@ $(window).load(function() {
                         //alert(base64);
                         var workbook = xlsx.decode(base64);
                         //alert(workbook);
-                        
+                         
                         for (var i = 0; i < workbook.data.length; i++) {
-                            ans.push(workbook.worksheets[i].name + "<br/>");
-                            ans.push("<table border='1'>");
+                            var table = new Table();
                             for (var j = 0; j < workbook.data[i].length; j++) {
-                                ans.push("<tr>");
-                                if (workbook.data[i][j]) {
+                                row = [];
+                                if (!workbook.data[i][j]) {
+                                    row.push("");
+                                }
+                                else {
                                     for (var k = 0; k < workbook.data[i][j].length; k++) {
                                         var c = workbook.data[i][j][k];
-                                        if (c && c.value) {
-                                            ans.push("<td>" + c.value + "</td>");
-                                        }
+                                        var cell_v = c && c.value ? c.value : "";
+                                        row.push(cell_v);
                                     }
                                 }
-                                ans.push("</tr>");
+                                table.push(row);
                             }
-                            ans.push("</table>");
+                            ans = ans + workbook.worksheets[i].name + "\n";
+                            ans = ans + table.toString() + "\n";
                         }
-                        
-                        ans = ans.join("");
+                        ans = "<pre>" + ans + "</pr>"
                         var div = document.createElement('div');
                         var d = document.getElementById('list').insertBefore(div, null);
                         d.innerHTML = ans;

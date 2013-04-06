@@ -1,6 +1,6 @@
-var JSZip, data64, filename, fs, workbook, xlsx;
+var JSZip, Table, c, cell_v, data64, filename, fs, i, j, k, row, table, workbook, xlsx, _i, _j, _k, _ref, _ref1, _ref2;
 
-var Table = require("cli-table");
+Table = require('cli-table');
 
 JSZip = require('node-zip');
 
@@ -18,26 +18,19 @@ data64 = fs.readFileSync(filename, "base64");
 
 workbook = xlsx.decode(data64);
 
-// console.log(JSON.stringify(workbook, null, 4));
-
-var table = new Table();
-
-for (var i = 0; i < workbook.data.length; i++) {    
-    sheet = [];
-    for (var j = 0; j < workbook.data[i].length; j++) {        
-        row = [];
-        if (workbook.data[i][j]) {
-            for (var k = 0; k < workbook.data[i][j].length; k++) {            
-                var c = workbook.data[i][j][k];
-                if (c && c.value) {                
-                    row.push(c.value);
-                } else {
-                    row.push("");
-                }                
-            }
-        }
-        table.push(row);
+for (i = _i = 0, _ref = workbook.data.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
+  table = new Table();
+  for (j = _j = 0, _ref1 = workbook.data[i].length; 0 <= _ref1 ? _j < _ref1 : _j > _ref1; j = 0 <= _ref1 ? ++_j : --_j) {
+    row = [];
+    if (workbook.data[i][j]) {
+      for (k = _k = 0, _ref2 = workbook.data[i][j].length; 0 <= _ref2 ? _k < _ref2 : _k > _ref2; k = 0 <= _ref2 ? ++_k : --_k) {
+        c = workbook.data[i][j][k];
+        cell_v = c && c.value ? c.value : "";
+        row.push(cell_v);
+      }
     }
-    console.log(table.toString());
+    table.push(row);
+  }
+  console.log(workbook.worksheets[i].name);
+  console.log(table.toString());
 }
-
