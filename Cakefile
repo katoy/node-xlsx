@@ -210,7 +210,7 @@ test2_phantomjs = (otpions) ->
 coverage = (options) ->
   puts "Do following."
   puts '  $ rm -fr lib-cov'
-  puts '  $ jscoverage lib lib-cov'
+  puts '  $ node_modules/.bin/jscoverage lib lib-cov'
   puts '  $ TEST_COV=1 mocha --reporter html-cov > coverage.html'
   puts ''
 
