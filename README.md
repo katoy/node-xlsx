@@ -11,6 +11,14 @@ and for one test script on  https://github.com/feugy/xlsx.js
 tarvis : [![Build Status](https://secure.travis-ci.org/katoy/node-xlsx.png)](http://travis-ci.org/katoy/node-xlsx)  
 
 
+Demo:
+------
+
+http://homepage2.nifty.com/youichi_kato/src/github/node-xlsx/sample2/index1.html
+
+http://homepage2.nifty.com/youichi_kato/src/github/node-xlsx/sample2/index2.html
+
+
 Settings:
 ------------
 
