@@ -499,5 +499,8 @@ Running Test
 History
 -------
 
+2013-04-26  Follow xlsx.js 2.3.0  
 2013-02-16  Follow xlsx.js 2.2.0  
 2012-10-27  Follow xlsx.js 2.0.0
+
+xlsx.js:  https://github.com/stephen-hardy/xlsx.js

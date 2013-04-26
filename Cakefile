@@ -163,7 +163,7 @@ test = (options) ->
     mochaPath = which 'mocha'
   catch e
     error 'cannot find executable `mocha`'
-    error 'check which coffee'
+    error 'check which mocha'
     return
   mocha = spawn mochaPath, ["--compilers", "coffee:coffee-script", "--reporter", "tap", "--timeout", "50000"]
   mocha.stdout.on 'data', (data) -> puts data
@@ -174,8 +174,8 @@ test2_node = (otpions) ->
   try
     nodePath = which 'node'
   catch e
-    error 'cannot find executable `mocha`'
-    error 'check which coffee'
+    error 'cannot find executable `node`'
+    error 'check which node'
     return
   node = spawn nodePath, ["test2/node-index.js"]
   node.stdout.on 'data', (data) -> puts data
@@ -211,6 +211,7 @@ coverage = (options) ->
   puts "Do following."
   puts '  $ rm -fr lib-cov'
   puts '  $ node_modules/.bin/jscoverage lib lib-cov'
-  puts '  $ TEST_COV=1 mocha --reporter html-cov > coverage.html'
+  puts '  $ TEST_COV=1 node_modules/.bin/mocha --reporter html-cov > coverage.html'
+  puts '  $ open coverage.html'
   puts ''
 

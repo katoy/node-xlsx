@@ -48,7 +48,7 @@ describe "unit tests", ->
         name: "empty"
         data: [[]]
         table: false
-        maxCol: 0
+        maxCol: 1
         maxRow: 1
       ]
 

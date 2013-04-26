@@ -58,7 +58,7 @@ describe 'Write XLSX ', ->
   workbook.modified = new Date("2012-10-14")
 
   # save
-  fs.mkdir "test/testout"
+  fs.mkdirSync "test/testout" unless fs.existsSync "test/testout"
   encodedData = xlsx.encode(workbook)
   binaryData = new Buffer(encodedData["base64"], "base64")
   fs.writeFileSync "test/testout/save.xlsx", binaryData
@@ -79,7 +79,8 @@ describe 'Write XLSX ', ->
     book.worksheets[1].data[0].length.should.be.equal 2, "num col of sheets[1] row[0]"
 
     book.worksheets[0].name.should.be.equal "sheet_1", "check name of sheet[0]"
-    book.worksheets[1].name.should.be.equal "シート<2>", "check name of sheet[1]"
+    #book.worksheets[1].name.should.be.equal "シート<2>", "check name of sheet[1]"
+    book.worksheets[1].name.should.be.equal "シート&lt;2&gt;", "check name of sheet[1]"  # ver 2.3.0
 
     book.worksheets[0].data[0][0].should.be.eql { value: 10, formatCode: 'General' },       "check sheet0.data[0][0]"
     book.worksheets[0].data[0][1].should.be.eql { value: "ABC", formatCode: 'General' },    "check sheet0.data[0][1]"
