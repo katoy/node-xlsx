@@ -22,8 +22,19 @@ alphaNum = (s) ->
   t = alphaNum(s.charAt(0)) + 1  if s.length is 2
   t * 26 + alphabet.indexOf(s.substr(-1))
 
+#convertDate = (input) ->
+#  (if typeof input is "object" then ((input - new Date(1900, 0, 0)) / 86400000) + 1 else new Date(+new Date(1900, 0, 0) + (input - 1) * 86400000))
+
+START_DAY = new Date("1900-01-01");
+
+# 0 <--> Date(1900-01-01), 1 <--> Datde(1900-01-02) ...
 convertDate = (input) ->
-  (if typeof input is "object" then ((input - new Date(1900, 0, 0)) / 86400000) + 1 else new Date(+new Date(1900, 0, 0) + (input - 1) * 86400000))
+  if typeof input is "object"
+    ((input - START_DAY) / 86400000)
+  else
+    d = new Date("1900-01-01")
+    d.setTime(d.getTime() + input * 86400000)
+    d
 
 exports.convertDate = convertDate
 
