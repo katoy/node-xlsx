@@ -6,7 +6,7 @@
 "use strict"
 
 # v2.3.0
-JSZip = require("node-zip")  if typeof require is "function"
+# JSZip = require("node-zip")  if typeof require is "function"
 
 defaultFontName = "Calibri"
 defaultFontSize = 11
