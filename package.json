@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "coffee-script": ">=1.6.0",
-    "node-zip": ">=1.0.21",
+    "node-zip": ">=1.0.1",
     "dateformat": "*",
     "cli-table": ">=0.2.0"
   },
