@@ -43,7 +43,7 @@
   },
   "license": "Microsoft Office Extensible File License",
   "scripts": {
-    "test": "cake build; node_modules/.bin/mocha",
+    "test": "cake build; mocha",
     "preinstall_x": "npm install -g mocha phantomjs jscoverage"
   }
 }
