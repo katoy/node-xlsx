@@ -8,7 +8,7 @@ and for one test script on  https://github.com/feugy/xlsx.js
 
 ./sample2 is sample in web page.  
 
-tarvis : [![Build Status](https://secure.travis-ci.org/katoy/node-xlsx.png)](http://travis-ci.org/katoy/node-xlsx)  
+tarvis : [![Build Status](https://secure.travis-ci.org/katoy/node-xlsx.png)](http://travis-ci.org/katoy/node-xlsx) [![Greenkeeper badge](https://badges.greenkeeper.io/katoy/node-xlsx.svg)](https://greenkeeper.io/)  
 
 
 Demo:
